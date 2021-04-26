@@ -40,8 +40,8 @@ MellowCloud is a SoundClound clone designed to help you find music and sounds to
 | userId      | int       | not null, foreign key |
 | trackId     | int       | not null, foreign key |
 
-`userId` references `id` from `users`
-`trackId` references `id` from `tracks`
+- `userId` references `id` from `users`
+- `trackId` references `id` from `tracks`
 
 ## `Tracks`
 | column name | data type | details               |

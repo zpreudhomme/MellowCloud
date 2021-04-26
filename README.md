@@ -21,9 +21,9 @@ MellowCloud is a SoundClound clone designed to help you find music and sounds to
  - Logged in users will be able to leave a comment on a track
  - Adding a comment to the page will not cause a full page reload
 
-# Database Schema
+## Database Schema
 
-## `Users`
+### `Users`
 | column name    | data type     | details               |
 |----------------|---------------|-----------------------|
 | id             | int           | not null, primary key |
@@ -32,7 +32,7 @@ MellowCloud is a SoundClound clone designed to help you find music and sounds to
 | hashedPassword | binary string | not null              |
 | profilePhoto   | string        |                       |
 
-## `Comments`
+### `Comments`
 | column name | data type | details               |
 |-------------|-----------|-----------------------|
 | id          | int       | not null, primary key |
@@ -43,7 +43,7 @@ MellowCloud is a SoundClound clone designed to help you find music and sounds to
 - `userId` references `id` from `users`
 - `trackId` references `id` from `tracks`
 
-## `Tracks`
+### `Tracks`
 | column name | data type | details               |
 |-------------|-----------|-----------------------|
 | id          | int       | not null, primary key |

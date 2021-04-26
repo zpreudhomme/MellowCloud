@@ -1,12 +1,12 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Redirect, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
 
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
-
+  const history = useHistory();
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
@@ -29,30 +29,36 @@ function Navigation({ isLoaded }){
     );
   }
 
-  
+  const buttonClick = (e) => {
+    let id = e.target.id;
+    if (id === "home") id = "";
+    history.push(`/${id}`)
+  }
 
   return (
     <>
       <nav className="navbar">
         <div className="navbar-contents">
-          <div className="navbar-logo"></div>
-          <NavLink exact to="/">
-            <div className="navbar-home">
+          <div id ="home" className="navbar-logo" onClick={(e)=> buttonClick(e)}>Logo</div>
+          <div className="navbar-left">
+            <div id="home" className="navbar-home" onClick={(e)=> buttonClick(e)}>
               Home
             </div>
-          </NavLink>
-          <NavLink to="/stream">
-            <div className="navbar-stream">
+            
+            <div id="stream" className="navbar-stream" onClick={(e)=> buttonClick(e)}>
               Stream
             </div>
-          </NavLink>
-          <NavLink to="/library">
-            <div className="navbar-library">
+    
+            <div id="library" className="navbar-library" onClick={(e)=> buttonClick(e)}>
               Library
             </div>
-          </NavLink>
-          <input type="text"></input>
-          {isLoaded && sessionLinks}
+          </div>
+          <div className="navbar-search">
+            <input id="searchbar" type="text"></input>
+          </div>
+          <div className="navbar-right">
+            {isLoaded && sessionLinks}
+          </div>
         </div>
       </nav>
         <div className="test">

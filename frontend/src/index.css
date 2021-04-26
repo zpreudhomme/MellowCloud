@@ -1,1 +1,11 @@
 /* TODO Add site wide styles */
+html {
+    font-family: Arial, Helvetica, sans-serif;
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding-bottom: 60px;
+    padding-top: 34px;
+}

@@ -16,11 +16,15 @@ module.exports = {
       email: {
         type: Sequelize.STRING(256),
         allowNull: false,
+        isEmail: true,
         unique: true,
       },
       hashedPassword: {
         type: Sequelize.STRING.BINARY,
         allowNull: false,
+      },
+      profilePhoto: {
+        type: Sequelize.TEXT
       },
       createdAt: {
         allowNull: false,

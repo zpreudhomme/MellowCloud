@@ -30,8 +30,9 @@ module.exports = (sequelize, DataTypes) => {
         len: [60, 60]
       },
     },
+    profilePhoto: DataTypes.TEXT
   },
-  {
+    {
     defaultScope: {
       attributes: {
         exclude: ['hashedPassword', 'email', 'createdAt', 'updatedAt'],

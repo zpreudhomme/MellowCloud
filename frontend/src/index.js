@@ -24,7 +24,6 @@ function Root() {
   return (
     <ReduxProvider store={store}>
       <BrowserRouter>
-      <h1>Hello World!</h1>
         <App />
       </BrowserRouter>
     </ReduxProvider>

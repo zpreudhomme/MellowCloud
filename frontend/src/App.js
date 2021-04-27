@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage";
@@ -18,6 +18,7 @@ const defaultTrack = {
 
 function App() {
   const dispatch = useDispatch();
+  const track = useSelector(state => state.track);
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
     dispatch(trackActions.getPlaylistByGenre(1))
@@ -27,7 +28,7 @@ function App() {
   return (
     <>
       <Navigation isLoaded={isLoaded} />
-      <AudioPlayer tracks={[defaultTrack]} index={0}/>
+      <AudioPlayer tracks={track.currentPlaylist} index={track.currentTrack}/>
       {isLoaded && (
         <Switch>
           <Route path="/login">

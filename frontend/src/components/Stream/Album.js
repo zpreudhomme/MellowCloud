@@ -6,7 +6,7 @@ const Album = ({track, index}) => {
     const tracks = useSelector(state => state.track);
     const setSong = () => {
     
-        dispatch(trackActions.setTrack(tracks.currentPlaylist[index]))
+        dispatch(trackActions.setTrack(index));
     }
 
     return (

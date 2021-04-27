@@ -3,6 +3,13 @@ import AudioControls from './AudioControls'
 import './AudioPlayer.css'
 
 const AudioPlayer = ({ tracks, index }) => {
+    if (!tracks){
+        tracks = [{
+
+        }];
+        index = 0;
+    }
+    console.log(index)
     // Important States
     const [trackIndex, setTrackIndex] = useState(index);
     const [trackProgress, setTrackProgress] = useState(0);

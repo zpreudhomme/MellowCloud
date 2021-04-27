@@ -3,7 +3,7 @@ import { csrfFetch } from './csrf'
 const SET_TRACK = 'track/SET_TRACK'
 const SET_PLAYLIST = 'track/SET_PLAYLIST'
 
-const setTrack = track => ({
+export const setTrack = track => ({
     type: SET_TRACK,
     track
 })

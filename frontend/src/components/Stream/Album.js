@@ -1,8 +1,12 @@
+import * as trackActions from '../../store/track';
+import { useDispatch, useSelector } from 'react-redux';
 
-const Album = ({track}) => {
-
+const Album = ({track, index}) => {
+    const dispatch = useDispatch();
+    const tracks = useSelector(state => state.track);
     const setSong = () => {
-        console.log("I'm playing music!")
+    
+        dispatch(trackActions.setTrack(tracks.currentPlaylist[index]))
     }
 
     return (

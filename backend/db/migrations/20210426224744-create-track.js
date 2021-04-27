@@ -12,9 +12,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
-      artist: {
+      artistId: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER,
+        references: {model: "Users"},
       },
       artwork: {
         type: Sequelize.TEXT
@@ -30,11 +31,13 @@ module.exports = {
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn('now'),
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn('now'),
       }
     });
   },

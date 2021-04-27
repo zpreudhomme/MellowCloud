@@ -18,6 +18,7 @@ function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
+    dispatch(sessionActions.getPlaylistByGenre(1)).then((res) => console.log(res));
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
 

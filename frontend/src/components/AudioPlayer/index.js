@@ -2,13 +2,13 @@ import React, { useState, useEffect, useRef } from 'react';
 import AudioControls from './AudioControls'
 import './AudioPlayer.css'
 
-const AudioPlayer = ({ track }) => {
+const AudioPlayer = ({ tracks, index }) => {
     // Important States
-    const [trackIndex, setTrackIndex] = useState(0);
+    const [trackIndex, setTrackIndex] = useState(index);
     const [trackProgress, setTrackProgress] = useState(0);
     const [isPlaying, setIsPlaying] = useState(false)
 
-    const { title, artist, artwork, audioSrc } = track;
+    const { title, artist, artwork, audioSrc } = tracks[trackIndex];
 
     // References
     const audioRef = useRef(new Audio(audioSrc));
@@ -57,15 +57,18 @@ const AudioPlayer = ({ track }) => {
     //Will go to next track
     const toPrevTrack = () => {
         if (trackIndex - 1 < 0) {
-          setTrackIndex(0);
+            setTrackIndex(tracks.length - 1);
         } else {
-          setTrackIndex(0);
+            setTrackIndex(trackIndex - 1);
         }
       }
       
       const toNextTrack = () => {
-        setTrackIndex(0);
-        
+        if (trackIndex < tracks.length - 1) {
+            setTrackIndex(trackIndex + 1);
+        } else {
+            setTrackIndex(0);
+        }
       }
 
     const startTimer = () => {

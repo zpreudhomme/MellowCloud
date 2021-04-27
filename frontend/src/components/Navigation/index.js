@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, Redirect, useHistory } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
@@ -64,9 +64,6 @@ function Navigation({ isLoaded }){
           </div>
         </div>
       </nav>
-        <div className="test">
-          <p>heyyyyyyyy</p>
-        </div>
     </>
   );
 }

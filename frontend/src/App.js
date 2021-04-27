@@ -4,7 +4,9 @@ import { Route, Switch } from "react-router-dom";
 import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage";
 import AudioPlayer from "./components/AudioPlayer";
+import Stream from "./components/Stream"
 import * as sessionActions from "./store/session";
+import * as trackActions from "./store/track";
 import Navigation from "./components/Navigation";
 
 const defaultTrack = {
@@ -18,14 +20,14 @@ function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
-    dispatch(sessionActions.getPlaylistByGenre(1)).then((res) => console.log(res));
+    dispatch(trackActions.getPlaylistByGenre(1))
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
   return (
     <>
       <Navigation isLoaded={isLoaded} />
-      <AudioPlayer track={defaultTrack}/>
+      <AudioPlayer tracks={[defaultTrack]} index={0}/>
       {isLoaded && (
         <Switch>
           <Route path="/login">
@@ -33,6 +35,9 @@ function App() {
           </Route>
           <Route path="/signup">
             <SignupFormPage />
+          </Route>
+          <Route path ="/stream">
+            <Stream />
           </Route>
         </Switch>
       )}

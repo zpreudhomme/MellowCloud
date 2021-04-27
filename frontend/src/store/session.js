@@ -33,13 +33,6 @@ export const restoreUser = () => async dispatch => {
     return response;
 }
 
-export const getPlaylistByGenre = (id) => async dispatch => {
-    const response = await csrfFetch(`api/tracks/genre/${id}`)
-
-    const data = await response.json();
-    return data;;
-}
-
 export const signup = (user) => async dispatch => {
     const { username, email, password } = user;
     const response = await csrfFetch("/api/users", {

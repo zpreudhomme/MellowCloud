@@ -9,7 +9,9 @@ const AudioPlayer = ({ tracks, index }) => {
         }];
         index = 0;
     }
-    console.log(index)
+    if (!index){
+        index = 0;
+    }
     // Important States
     const [trackIndex, setTrackIndex] = useState(index);
     const [trackProgress, setTrackProgress] = useState(0);
@@ -33,7 +35,7 @@ const AudioPlayer = ({ tracks, index }) => {
         } else {
             audioRef.current.pause();
         }
-    }, [isPlaying]);
+    }, [isPlaying, trackIndex]);
 
     //Cleans up stuff on unmount
     useEffect(() => {

@@ -1,4 +1,5 @@
 'use strict';
+const { User, Genre} = require('./index')
 module.exports = (sequelize, DataTypes) => {
   const Track = sequelize.define('Track', {
     title: {
@@ -28,8 +29,8 @@ module.exports = (sequelize, DataTypes) => {
     Track.hasMany(models.Comments, { foreignKey: 'trackId' })
   };
 
-  Track.prototype.getSongById = async function (id) {
-    console.log(id);
+  Track.getSongById = async function (id) {
+    
     return await Track.findByPk(id);
   }
 
@@ -37,9 +38,13 @@ module.exports = (sequelize, DataTypes) => {
     let tracks = await Track.findAll({
       where: {
         genreId: genreId 
-      }
+      },
+      // include: {
+      //   model: User,
+      //   required: true,
+      // }
     })
-    // console.log(tracks);
+    console.log(tracks);
     return tracks;
   }
 

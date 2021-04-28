@@ -1,6 +1,6 @@
 .audio-player {
     width: 1080px;
-    background-color: limegreen;
+    background-color: #B5BCC7;
     height:60px;
     display:grid;
     grid-template-columns: 1fr 3fr 2fr;
@@ -16,7 +16,7 @@
     right:0;
     position: fixed;
     height:60px;
-    background-color: lightsteelblue;
+    background-color: #B5BCC7;
     display: flex;
     justify-content: center;
 }

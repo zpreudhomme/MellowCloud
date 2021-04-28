@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Route, Switch } from "react-router-dom";
-import LoginFormPage from "./components/LoginFormPage";
+// import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage";
 import AudioPlayer from "./components/AudioPlayer";
 import Stream from "./components/Stream"
@@ -33,9 +33,9 @@ function App() {
       {playlistLoaded && trackLoaded && <AudioPlayer tracks={track.currentPlaylist}/>}
       {isLoaded && (
         <Switch>
-          <Route path="/login">
+          {/* <Route path="/login">
             <LoginFormPage />
-          </Route>
+          </Route> */}
           <Route path="/signup">
             <SignupFormPage />
           </Route>

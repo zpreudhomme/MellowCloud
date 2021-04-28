@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
+import LoginFormModal from '../LoginFormModal'
 import './Navigation.css';
 
 function Navigation({ isLoaded }){
@@ -18,11 +19,7 @@ function Navigation({ isLoaded }){
   } else {
     sessionLinks = (
       <>
-        <NavLink to="/login">
-          <div className="navbar-login">
-            Log In
-          </div>
-        </NavLink>
+        <LoginFormModal />
         <NavLink to="/signup">
           <div className="navbar-signup">
             Sign Up
@@ -42,7 +39,9 @@ function Navigation({ isLoaded }){
     <>
       <nav className="navbar">
         <div className="navbar-contents">
-          <div id ="home" className="navbar-logo" onClick={(e)=> buttonClick(e)}>Logo</div>
+          <div id ="home" className="navbar-logo" onClick={(e)=> buttonClick(e)}>
+            <img className="logo-img" src="https://mellowcloud.s3-us-west-1.amazonaws.com/mellowcloud-logo.png" alt="logo" />
+          </div>
           <div className="navbar-left">
             <div id="home" className="navbar-home" onClick={(e)=> buttonClick(e)}>
               Home
@@ -57,7 +56,7 @@ function Navigation({ isLoaded }){
             </div>
           </div>
           <div className="navbar-search">
-            <input id="searchbar" type="text"></input>
+            <input id="searchbar" type="text" placeholder="Search"></input>
           </div>
           <div className="navbar-right">
             {isLoaded && sessionLinks}

@@ -34,7 +34,7 @@ module.exports = (sequelize, DataTypes) => {
       where: {
         genreId: genreId 
       },
-      include: {association: 'User'},
+      include:['User', 'Genre'],
       }
     )
     return tracks;

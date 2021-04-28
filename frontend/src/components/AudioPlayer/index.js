@@ -4,17 +4,14 @@ import AudioControls from './AudioControls'
 import './AudioPlayer.css'
 
 const AudioPlayer = ({ tracks }) => {
-    if (!tracks){
-        tracks = [{}];
-        index = 0;
-    }
+
     let index = useSelector(state => state.track.currentTrack);
     // Important States
     const [trackIndex, setTrackIndex] = useState(index);
     const [trackProgress, setTrackProgress] = useState(0);
     const [isPlaying, setIsPlaying] = useState(false)
 
-    const { title, artist, artwork, audioSrc } = tracks[trackIndex];
+    const { title, User, artwork, audioSrc } = tracks[trackIndex];
 
     // References
     const audioRef = useRef(new Audio(audioSrc));
@@ -130,10 +127,11 @@ const AudioPlayer = ({ tracks }) => {
                     <img
                     className="artwork"
                     src={artwork} 
+                    alt="album art"
                     />
                     <div className="track-details">
                         <p className="track-title">{title}</p>
-                        <p className="track-artist">{artist}</p>
+                        <p className="track-artist">{User.username}</p>
                     </div>
                 </div>
             </div>

@@ -1,5 +1,5 @@
 .navbar{
-    background-color: #333;
+    background-color: #2F3235;
     height: 50px;
     position: fixed;
     top: 0;
@@ -10,20 +10,13 @@
 }
 
 .navbar-contents{
-    background-color: red;
+    background-color: #2F3235;
     width: 1080px;
     height:100%;
     display: grid;
     grid-template-columns: 65px 1fr 1fr 1fr;
     grid-template-areas: 
     "logo navbar-left search navbar-right";
-}
-
-.navbar-logo{
-    background-color:orange;
-    height: 100%;
-    width: 65px;
-    grid-area: "logo";
 }
 
 .navbar-left{
@@ -37,26 +30,32 @@
 
 .navbar-home{
     grid-area:"home";
-    background-color: lightyellow;
+    background-color: #2F3235;
     display: flex;
     justify-content: center;
     align-items: center;
+    color: #B5BCC7;
+    border-right: 1px solid black;
 }
 
 .navbar-stream{
     grid-area:"stream";
-    background-color: lightcoral;
+    background-color: #2F3235;
     display: flex;
     justify-content: center;
     align-items: center;
+    color: #B5BCC7;
+    border-right: 1px solid black;
 }
 
 .navbar-library{
     grid-area:"library";
-    background-color: lightseagreen;
+    background-color: #2F3235;
     display: flex;
     justify-content: center;
     align-items: center;
+    color: #B5BCC7;
+    border-right: 1px solid black;
 }
 
 .navbar-search{
@@ -88,13 +87,14 @@
 .profile-icon{
     font-size: 30px;
     padding-right: 10px;
-    color: white
+    color: #B5BCC7;
 }
 
 .profile-data{
     display: flex;
     justify-content: space-around;
     align-items: center;
+    color: #B5BCC7;
 }
 
 .profile-dropdown{
@@ -106,6 +106,22 @@
     flex-direction: column;
     width: 50px;
 }
-.navbar-login{
-    color:green;
+
+.navbar-logo{
+    background-color:#2F3235;
+    height: 50px;
+    width: 65px;
+    grid-area: "logo";
+    overflow: hidden;
+}
+
+.logo-img{
+    height: 65px;
+    width: 65px;
+    margin: -8px 0px 0px 0px;
+}
+
+#upload-btn{
+    text-decoration: none;
+    color: #5C91E0
 }

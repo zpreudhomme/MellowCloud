@@ -16,7 +16,7 @@ const Album = ({track, trackIndex, loadSong, loadPlaylist, playlistIndex}) => {
     return (
         <div className="individual-track">
             <h3>{track.title}</h3>
-            <h3>{track.artistId}</h3>
+            <h3>{track.User.username}</h3>
             <img alt={`album art for ${track.title}`} src={track.artwork}/>
             <button onClick={() => setSong()}>Play me!</button>
         </div>

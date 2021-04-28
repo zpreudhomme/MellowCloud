@@ -1,6 +1,14 @@
 const fetch = require("node-fetch");
 const bcrypt = require("bcryptjs")
 //Crediting: Pixabay, Freesound, Free Music Archive
+
+//colors
+// #2F3235
+// #5C91E0
+// #B5BCC7
+// #152A4A
+// #3A7D44
+
 async function createUsers () {
     let users = [];
     for (let i = 0; i < 30; i++){

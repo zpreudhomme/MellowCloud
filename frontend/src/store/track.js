@@ -2,15 +2,21 @@ import { csrfFetch } from './csrf'
 
 const SET_TRACK = 'track/SET_TRACK'
 const SET_PLAYLIST = 'track/SET_PLAYLIST'
+const SET_ALL_PLAYLIST = 'track/SET_ALL_PLAYLIST'
 
 export const setTrack = track => ({
     type: SET_TRACK,
     track
 })
 
-const setPlaylist = playlist => ({
+export const setPlaylist = playlist => ({
     type: SET_PLAYLIST,
     playlist
+})
+
+const setAllPlaylist = playlists => ({
+    type: SET_ALL_PLAYLIST,
+    playlists
 })
 
 export const getPlaylistByGenre = (id) => async dispatch => {
@@ -25,12 +31,14 @@ export const getAllPlaylistsByGenre = () => async dispatch => {
     const response = await csrfFetch('api/tracks/genre');
 
     const data = await response.json();
+    dispatch(setAllPlaylist(data))
     return data;
 }
 
 const initialState = {
     currentTrack: null,
     currentPlaylist: null,
+    allPlaylists: null,
 }
 
 const trackReducer = (state= initialState, action) => {
@@ -41,6 +49,9 @@ const trackReducer = (state= initialState, action) => {
             return newState;
         case SET_PLAYLIST:
             newState.currentPlaylist = action.playlist;
+            return newState;
+            case SET_ALL_PLAYLIST:
+            newState.allPlaylists = action.playlists;
             return newState;
         default:
             return state;

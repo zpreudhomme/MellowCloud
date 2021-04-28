@@ -23,7 +23,7 @@ function App() {
   const [trackLoaded, setTrackLoaded] = useState(false);
   const [playlistLoaded, setPlaylistLoaded] = useState(false);
   useEffect(() => {
-    dispatch(trackActions.getPlaylistByGenre(2)).then(() => setPlaylistLoaded(true))
+    dispatch(trackActions.getAllPlaylistsByGenre()).then(() => setPlaylistLoaded(true))
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
@@ -40,7 +40,7 @@ function App() {
             <SignupFormPage />
           </Route>
           <Route path ="/stream">
-            <Stream loadSong={setTrackLoaded}/>
+            <Stream loadSong={setTrackLoaded} loadPlaylist={setPlaylistLoaded} playlists={track.allPlaylists}/>
           </Route>
         </Switch>
       )}

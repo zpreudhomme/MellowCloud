@@ -34,11 +34,9 @@ module.exports = (sequelize, DataTypes) => {
       where: {
         genreId: genreId 
       },
-      // include: {
-      //   model: User
-      // }
-    })
-    console.log(tracks);
+      include: {association: 'User'},
+      }
+    )
     return tracks;
   }
 

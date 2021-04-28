@@ -1,12 +1,15 @@
 import * as trackActions from '../../store/track';
 import { useDispatch, useSelector } from 'react-redux';
 
-const Album = ({track, index, loadSong}) => {
+const Album = ({track, trackIndex, loadSong, loadPlaylist, playlistIndex}) => {
     const dispatch = useDispatch();
     const tracks = useSelector(state => state.track);
     const setSong = () => {
         loadSong(false)
-        dispatch(trackActions.setTrack(index));
+        loadPlaylist(false)
+        dispatch(trackActions.setPlaylist(tracks.allPlaylists[playlistIndex]))
+        dispatch(trackActions.setTrack(trackIndex));
+        loadPlaylist(true)
         loadSong(true);
     }
 

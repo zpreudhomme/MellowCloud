@@ -35,6 +35,10 @@ export const getAllPlaylistsByGenre = () => async dispatch => {
     return data;
 }
 
+export const getMostRecent = () => async dispatch => {
+    const response = await csrfFetch('');
+}
+
 const initialState = {
     currentTrack: null,
     currentPlaylist: null,

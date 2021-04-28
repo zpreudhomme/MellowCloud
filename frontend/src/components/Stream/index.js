@@ -1,12 +1,18 @@
 import React from 'react';
-// import * as trackActions from '../../store/track';
-import { useSelector } from 'react-redux';
+import * as trackActions from '../../store/track';
+import { useSelector, useDispatch } from 'react-redux';
 
 import './Stream.css'
 
 import Album from './Album'
 
 const Stream = ({loadSong}) => {
+    const dispatch = useDispatch();
+    let playlists;
+    const getPlaylists = async function (){
+        playlists = await dispatch(trackActions.getAllPlaylistsByGenre())
+    }
+    getPlaylists()
     const track = useSelector(state => state.track);
     return (
         <>

@@ -21,6 +21,13 @@ export const getPlaylistByGenre = (id) => async dispatch => {
     return data;
 }
 
+export const getAllPlaylistsByGenre = () => async dispatch => {
+    const response = await csrfFetch('api/tracks/genre');
+
+    const data = await response.json();
+    return data;
+}
+
 const initialState = {
     currentTrack: null,
     currentPlaylist: null,

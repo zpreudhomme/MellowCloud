@@ -1,17 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useSelector } from 'react-redux';
 import AudioControls from './AudioControls'
 import './AudioPlayer.css'
 
-const AudioPlayer = ({ tracks, index }) => {
+const AudioPlayer = ({ tracks }) => {
     if (!tracks){
-        tracks = [{
-
-        }];
+        tracks = [{}];
         index = 0;
     }
-    if (!index){
-        index = 0;
-    }
+    let index = useSelector(state => state.track.currentTrack);
     // Important States
     const [trackIndex, setTrackIndex] = useState(index);
     const [trackProgress, setTrackProgress] = useState(0);
@@ -22,13 +19,17 @@ const AudioPlayer = ({ tracks, index }) => {
     // References
     const audioRef = useRef(new Audio(audioSrc));
     const intervalRef = useRef();
-    const isReady = useRef(false);
+    const isReady = useRef(true);
 
     const { duration } = audioRef.current;
 
     //Use Effects
+    useEffect(() => {
+        setTrackIndex(index);
+    }, [index]);
 
     useEffect(() => {
+        console.log(trackIndex)
         if (isPlaying){
             audioRef.current.play();
             startTimer();

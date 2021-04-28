@@ -30,7 +30,7 @@ function App() {
   return (
     <>
       <Navigation isLoaded={isLoaded} />
-      {playlistLoaded && trackLoaded && <AudioPlayer tracks={track.currentPlaylist} index={track.currentTrack}/>}
+      {playlistLoaded && trackLoaded && <AudioPlayer tracks={track.currentPlaylist}/>}
       {isLoaded && (
         <Switch>
           <Route path="/login">

@@ -29,24 +29,28 @@ module.exports = (sequelize, DataTypes) => {
     Track.hasMany(models.Comments, { foreignKey: 'trackId' })
   };
 
-  Track.getSongById = async function (id) {
-    
-    return await Track.findByPk(id);
-  }
-
   Track.getPlaylistByGenre = async function (genreId) {
     let tracks = await Track.findAll({
       where: {
         genreId: genreId 
       },
       // include: {
-      //   model: User,
-      //   required: true,
+      //   model: User
       // }
     })
     console.log(tracks);
     return tracks;
   }
+
+  Track.getAllPlaylistsByGenre = async function () {
+    let playlistArr = [];
+    for (let i = 1; i < 5; i++){
+      let subArr = await Track.getPlaylistByGenre(i);
+      playlistArr.push(subArr);
+    }
+    return playlistArr;
+  }
+
 
   return Track;
 };

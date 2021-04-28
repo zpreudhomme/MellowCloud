@@ -16,7 +16,7 @@ const Stream = ({loadSong, loadPlaylist, playlists}) => {
   
     // const playlists = useSelector(state => state.track.allPlaylists);
     return (
-        <>
+        <div className="page">
             <h1>Discover Page</h1>
             <div className="playlist-container">
                 {playlists.map((list, j) =>(
@@ -30,10 +30,7 @@ const Stream = ({loadSong, loadPlaylist, playlists}) => {
                     </div>
                 ))}
             </div>
-            {/* {track.currentPlaylist && track.currentPlaylist.map((el, i) => (
-                <Album key={i} track={el} index={i} loadSong={loadSong} loadPlaylist={loadPlaylist}/> 
-         ))} */}
-        </>
+        </div>
     );
 }
 

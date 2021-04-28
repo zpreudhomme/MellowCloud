@@ -61,21 +61,29 @@
 .navbar-search{
     grid-area: "search";
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
+    padding-left: 15px;
     align-items: center;
 }
 
 #searchbar{
     border-color: rgba(0, 0, 0, 0.2);
     border-radius: 3px;
-    height: 30px;
-    width: 280px;
+    height: 27px;
+    width: 150px;
+    font-size: 16px;
+    transition-property: width;
+    transition-duration: 1.5s;
+}
+
+#searchbar:focus{
+    width:300px;
 }
 
 .navbar-right{
     grid-area: "nav-right";
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-end;
     align-items: center;
 }
 
@@ -123,5 +131,27 @@
 
 #upload-btn{
     text-decoration: none;
-    color: #5C91E0
+    color: #5C91E0;
+    padding-right: 50px;
+}
+
+.navbar-signup{
+    color: white;
+    background-color: #5C91E0;
+    border: 1px white solid;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.login-btn{
+    color: #B5BCC7;
+    background-color: #2F3235;
+    border: 1px #B5BCC7 solid;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 14px; 
+    margin-right: 15px;
 }

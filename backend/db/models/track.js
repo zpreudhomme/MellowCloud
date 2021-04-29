@@ -52,7 +52,8 @@ module.exports = (sequelize, DataTypes) => {
   Track.getMostRecentTracks = async function () {
     let tracks = await Track.findAll({
       order: [['createdAt', 'DESC']],
-      limit: 4
+      limit: 12,
+      include:['User', 'Genre'],
     });
 
     return tracks;

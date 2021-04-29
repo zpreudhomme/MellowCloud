@@ -23,7 +23,7 @@ function App() {
   const [trackLoaded, setTrackLoaded] = useState(false);
   const [playlistLoaded, setPlaylistLoaded] = useState(false);
   useEffect(() => {
-    dispatch(trackActions.getAllPlaylistsByGenre()).then(() => setPlaylistLoaded(true))
+    // dispatch(trackActions.getAllPlaylistsByGenre()).then(() => setPlaylistLoaded(true))
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
@@ -31,18 +31,20 @@ function App() {
     <>
       <Navigation isLoaded={isLoaded} />
       {playlistLoaded && trackLoaded && <AudioPlayer tracks={track.currentPlaylist}/>}
-      {isLoaded && (
-        <Switch>
-          <Route exact path="/">
-            <Splash />
-          </Route>
-          <Route path="/signup">
-            <SignupFormPage />
-          </Route>
-          <Route path ="/stream">
-            <Stream loadSong={setTrackLoaded} loadPlaylist={setPlaylistLoaded} playlists={track.allPlaylists}/>
-          </Route>
-        </Switch>
+      {isLoaded && ( 
+        <div className="main-page">
+          <Switch>
+            <Route exact path="/">
+              <Splash loadSong={setTrackLoaded} loadPlaylist={setPlaylistLoaded}/>
+            </Route>
+            <Route path="/signup">
+              <SignupFormPage />
+            </Route>
+            <Route path ="/stream">
+              <Stream loadSong={setTrackLoaded} loadPlaylist={setPlaylistLoaded} playlists={track.allPlaylists}/>
+            </Route>
+          </Switch>
+        </div>
       )}
     </>
   );

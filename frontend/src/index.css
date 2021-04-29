@@ -7,15 +7,21 @@ html {
 body {
     margin: 0;
     padding-bottom: 60px;
-    padding-top: 29px;
-    width: 1080px;
+    padding-top: 50px;
     background-color: #152A4A;
     
 }
 
+.main-page{
+    display: grid;
+    grid-template-columns: 1fr 1080px 1fr;
+    grid-template-areas: ". page .";
+}
+
 .page{
+    grid-area: page;
     min-width: 1080px;
     max-width:1080px;
     background-color: white;
-    margin-left: 100px;
 }
+

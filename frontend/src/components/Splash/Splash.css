@@ -1,12 +1,15 @@
 #splash-img{
     width:1080px;
 }
+.splash{
+    margin: auto;
+}
 
 .splash-img-wrapper{
     width: 1080px;
     height: 500px;
     overflow: hidden;
-    /* position:relative; */
+    position:relative;
     color: white;
     text-align:center;
 }

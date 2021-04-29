@@ -1,15 +1,13 @@
 import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import AlbumDisplay from './AlbumDisplay';
 import * as trackActions from "../../store/track";
 
 import './Splash.css'
 
-function Splash() {
+function Splash({loadSong, loadPlaylist}) {
     const [isLoaded, setIsLoaded]= useState(false);
     const [playlist, setPlaylist]= useState([])
-    const dispatch = useDispatch();
     const history = useHistory();
 
     const streamClick = () => {
@@ -20,14 +18,26 @@ function Splash() {
     }
 
     useEffect(() => {
-        dispatch(trackActions.getMostRecent()).then((res)=> {
-            setPlaylist(res);
-            setIsLoaded(true)})
+        async function getData() {
+            let data = await trackActions.getMostRecent();
+            console.log("it me", data)
+            setPlaylist(data);
+        }
+        getData();
     }, [])
+
+    useEffect(() => {
+        if(playlist.length> 0){
+            console.log("watch me run")
+            setIsLoaded(true)
+        }
+        console.log(playlist)
+    }, [playlist])
+    
     return(
         <div className="page splash">
             <div className="splash-img-wrapper">
-                <img id="splash-img" src='https://mellowcloud.s3-us-west-1.amazonaws.com/splash-photo.jpg' alt='splash-photo' />
+                <img id="splash-img" src='https://images.unsplash.com/photo-1486520299386-6d106b22014b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80' alt='splash-photo' />
                 <div className="splash-img-center-1">Welcome to</div>
                 <div className="splash-img-center-2">MellowCloud</div>
                 <button className="splash-img-center-3" onClick={()=> streamClick()}>Start Relaxing</button>
@@ -36,7 +46,7 @@ function Splash() {
                 <input type="text" className="splash-searchbar" placeholder="Search for relaxing tracks"></input>
                 <button type="button" className="splash-upload" onClick={() => uploadClick()}>Upload your own</button>
             </div>
-            {isLoaded && <AlbumDisplay tracks={playlist}/>}
+            {isLoaded && <AlbumDisplay tracks={playlist} loadSong={loadSong} loadPlaylist={loadPlaylist}/>}
         </div>
     )
 

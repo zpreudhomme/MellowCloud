@@ -19,6 +19,7 @@
     background-color: #B5BCC7;
     display: flex;
     justify-content: center;
+    z-index: 10000;
 }
 
 .audio-controls {

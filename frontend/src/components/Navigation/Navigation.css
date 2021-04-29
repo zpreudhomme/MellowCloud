@@ -7,6 +7,7 @@
     right: 0;
     display: flex;
     justify-content: center;
+    z-index: 1000;
 }
 
 .navbar-contents{

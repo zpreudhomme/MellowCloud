@@ -38,7 +38,7 @@ function Navigation({ isLoaded }){
       <nav className="navbar">
         <div className="navbar-contents">
           <div id ="home" className="navbar-logo" onClick={(e)=> buttonClick(e)}>
-            <img className="logo-img" src="https://mellowcloud.s3-us-west-1.amazonaws.com/mellowcloud-logo.png" alt="logo" />
+            <img className="logo-img" src="https://res.cloudinary.com/mellowcloud123/image/upload/v1619719796/mellowcloud-logo_ibjlsm.png" alt="logo" />
           </div>
           <div className="navbar-left">
             <div id="home" className="navbar-home" onClick={(e)=> buttonClick(e)}>

@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Route, Switch } from "react-router-dom";
-// import LoginFormPage from "./components/LoginFormPage";
+import Splash from "./components/Splash";
 import SignupFormPage from "./components/SignupFormPage";
 import AudioPlayer from "./components/AudioPlayer";
 import Stream from "./components/Stream"
+import Track from "./components/Track"
+import User from "./components/User"
 import * as sessionActions from "./store/session";
-import * as trackActions from "./store/track";
 import Navigation from "./components/Navigation";
 
 // const defaultTrack = {
@@ -23,7 +24,7 @@ function App() {
   const [trackLoaded, setTrackLoaded] = useState(false);
   const [playlistLoaded, setPlaylistLoaded] = useState(false);
   useEffect(() => {
-    dispatch(trackActions.getAllPlaylistsByGenre()).then(() => setPlaylistLoaded(true))
+    // dispatch(trackActions.getAllPlaylistsByGenre()).then(() => setPlaylistLoaded(true))
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
@@ -31,18 +32,26 @@ function App() {
     <>
       <Navigation isLoaded={isLoaded} />
       {playlistLoaded && trackLoaded && <AudioPlayer tracks={track.currentPlaylist}/>}
-      {isLoaded && (
-        <Switch>
-          {/* <Route path="/login">
-            <LoginFormPage />
-          </Route> */}
-          <Route path="/signup">
-            <SignupFormPage />
-          </Route>
-          <Route path ="/stream">
-            <Stream loadSong={setTrackLoaded} loadPlaylist={setPlaylistLoaded} playlists={track.allPlaylists}/>
-          </Route>
-        </Switch>
+      {isLoaded && ( 
+        <div className="main-page">
+          <Switch>
+            <Route exact path="/">
+              <Splash loadSong={setTrackLoaded} loadPlaylist={setPlaylistLoaded}/>
+            </Route>
+            <Route path="/signup">
+              <SignupFormPage />
+            </Route>
+            <Route path ="/stream">
+              <Stream loadSong={setTrackLoaded} loadPlaylist={setPlaylistLoaded} playlists={track.allPlaylists}/>
+            </Route>
+            <Route path="/track/:trackId">
+              <Track />
+            </Route>
+            <Route path="/user/:userId">
+              <User />
+            </Route>
+          </Switch>
+        </div>
       )}
     </>
   );

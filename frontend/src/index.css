@@ -1,21 +1,86 @@
 /* TODO Add site wide styles */
 html {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Helvetica, sans-serif;
     height: 100%;
 }
 
 body {
     margin: 0;
     padding-bottom: 60px;
-    padding-top: 29px;
-    width: 1080px;
+    padding-top: 50px;
     background-color: #152A4A;
     
 }
 
+.main-page{
+    display: grid;
+    grid-template-columns: 1fr 1080px 1fr;
+    grid-template-areas: ". page .";
+}
+
 .page{
+    grid-area: page;
     min-width: 1080px;
     max-width:1080px;
     background-color: white;
-    margin-left: 25px;
+}
+
+.album-art-wrapper{
+    position:relative;
+}
+
+.album-art{
+    position:relative;
+    top:0;
+    left:0;
+}
+
+.album-art:hover + .album-play-btn{
+    visibility: visible;
+    cursor: pointer; 
+}
+
+.album-art:active + .album-play-btn{
+    visibility: visible;
+    cursor: pointer; 
+}
+
+
+.album-play-btn{
+    visibility: hidden;
+    position: relative;
+    top: -105px;
+    left: 33px;
+    height: 70px;
+    width: 70px;
+}
+
+.individual-track{
+    margin-bottom: 10px;
+    width: 135px;
+    height: 200px;
+    /* border: 1px solid black; */
+    margin-right: 20px;
+}
+
+.track-title{
+    font-size: 14px;
+    position: relative;
+    top: -90px;
+    text-decoration: none;
+    white-space: nowrap;
+    overflow-x: hidden;
+}
+
+.track-artist{
+    position: relative;
+    top:-100px;
+    color: gray;
+    font-size: 12px;
+}
+
+.track-title:hover,
+.track-artist:hover{
+    text-decoration: underline;
+    cursor: pointer; 
 }

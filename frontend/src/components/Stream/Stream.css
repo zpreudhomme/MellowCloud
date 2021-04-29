@@ -1,6 +1,6 @@
-.individual-track img {
-    height: 100px;
-    width: 100px;
+.individual-track .album-art {
+    height: 135px;
+    width: 135px;
 }
 
 .playlist{

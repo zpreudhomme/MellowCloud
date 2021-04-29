@@ -27,11 +27,25 @@ export const getPlaylistByGenre = (id) => async dispatch => {
     return data;
 }
 
-export const getAllPlaylistsByGenre = () => async dispatch => {
+export const getAllPlaylistsByGenre = async () => {
     const response = await csrfFetch('api/tracks/genre');
 
     const data = await response.json();
-    dispatch(setAllPlaylist(data))
+    return data;
+}
+
+export const getMostRecent = async () => {
+    const response = await csrfFetch('api/tracks/recent');
+
+    const data = await response.json();
+    return data;
+}
+
+export const getSingleTrack = async (id) => {
+    console.log("hi it me in frontend", id)
+    const response = await csrfFetch(`../api/tracks/single/${id}`)
+
+    const data = await response.json();
     return data;
 }
 

@@ -2,9 +2,6 @@ import { useEffect } from "react";
 import Album from '../Stream/Album'
 
 function AlbumDisplay({tracks, loadSong, loadPlaylist}) {
-    useEffect(() => {
-        console.log(tracks)
-    }, [])
     return (
         <div className="splash-album-container">
             {tracks.map((track, i) => (

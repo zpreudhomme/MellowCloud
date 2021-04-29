@@ -25,3 +25,30 @@ body {
     background-color: white;
 }
 
+.album-art-wrapper{
+    position:relative;
+}
+
+.album-art{
+    position:relative;
+    top:0;
+    left:0;
+}
+
+.album-art:hover + .album-play-btn{
+    visibility: visible;
+}
+
+.album-art:active + .album-play-btn{
+    visibility: visible;
+}
+
+
+.album-play-btn{
+    visibility: hidden;
+    position: relative;
+    top: -15px;
+    left: -85px;
+    height: 70px;
+    width: 70px;
+}

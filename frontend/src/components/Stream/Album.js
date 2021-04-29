@@ -17,8 +17,10 @@ const Album = ({track, trackIndex, playlist, loadSong, loadPlaylist}) => {
         <div className="individual-track">
             <h3>{track.title}</h3>
             <h3>{track.User.username}</h3>
-            <img alt={`album art for ${track.title}`} src={track.artwork}/>
-            <button onClick={() => setSong()}>Play me!</button>
+            <div className="album-art-wrapper" onClick={() => setSong()}>
+                <img className="album-art" alt={`album art for ${track.title}`} src={track.artwork}/>
+                <img className="album-play-btn" src="https://i.ibb.co/ww4rCGV/play-btn-img.png" />
+            </div>
         </div>
     )
 }

@@ -20,7 +20,6 @@ function Splash({loadSong, loadPlaylist}) {
     useEffect(() => {
         async function getData() {
             let data = await trackActions.getMostRecent();
-            console.log("it me", data)
             setPlaylist(data);
         }
         getData();
@@ -28,10 +27,8 @@ function Splash({loadSong, loadPlaylist}) {
 
     useEffect(() => {
         if(playlist.length> 0){
-            console.log("watch me run")
             setIsLoaded(true)
         }
-        console.log(playlist)
     }, [playlist])
     
     return(

@@ -44,6 +44,20 @@ function Splash({loadSong, loadPlaylist}) {
                 <button type="button" className="splash-upload" onClick={() => uploadClick()}>Upload your own</button>
             </div>
             {isLoaded && <AlbumDisplay tracks={playlist} loadSong={loadSong} loadPlaylist={loadPlaylist}/>}
+            <div className="about-div">
+                <div className="about-clone">
+                    <h2 className="splash-about-title">Welcome to my SoundCloud clone!</h2>
+                    <p>I have truly hated using AWS in this project :(</p>
+                </div>
+                <div className="about-profile">
+                    <h2 className="splash-about-title">Created By:</h2>
+                    <img src="https://avatars.githubusercontent.com/u/76059008?v=4"/>
+                    <h3>Zane Preudhomme</h3>
+                    <h4>App Academy</h4>
+                    <p>Zane loves to learn to code and loves exploring the great outdoors</p>
+                </div>
+            </div>
+
         </div>
     )
 

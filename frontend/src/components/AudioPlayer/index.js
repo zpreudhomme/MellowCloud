@@ -130,8 +130,8 @@ const AudioPlayer = ({ tracks }) => {
                     alt="album art"
                     />
                     <div className="track-details">
-                        <p className="track-title">{title}</p>
-                        <p className="track-artist">{User.username}</p>
+                        <p className="player-track-title">{title}</p>
+                        <p className="player-track-artist">{User.username}</p>
                     </div>
                 </div>
             </div>

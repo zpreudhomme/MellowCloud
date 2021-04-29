@@ -24,7 +24,7 @@
 
 .splash-img-center-2{
     position:absolute;
-    top: 52%;
+    top: 54%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 65px;
@@ -32,7 +32,7 @@
 
 .splash-img-center-3{
     position:absolute;
-    top: 65%;
+    top: 68%;
     left: 50%;
     transform: translate(-50%, -50%);
     color: #B5BCC7;
@@ -48,6 +48,7 @@
     display: flex;
     justify-content: center;
     padding: 30px 0px;
+    border-bottom: 1px solid #B5BCC7;
 }
 
 .splash-upload{
@@ -73,4 +74,43 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #B5BCC7;
+}
+
+.splash-album-title{
+    text-align: center;
+    padding-bottom: 10px;
+    color: #2F3235;
+}
+
+.about-div{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "clone profile";
+}
+
+.about-clone{
+    grid-area: clone;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.about-profile{
+    grid-area: profile;
+    border-left: solid 1px #B5BCC7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.splash-about-title{
+    color: #2F3235;
+    text-align: center;
+}
+
+.about-profile img {
+    height: 135px;
+    width: 135px;
 }

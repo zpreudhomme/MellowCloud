@@ -37,18 +37,50 @@ body {
 
 .album-art:hover + .album-play-btn{
     visibility: visible;
+    cursor: pointer; 
 }
 
 .album-art:active + .album-play-btn{
     visibility: visible;
+    cursor: pointer; 
 }
 
 
 .album-play-btn{
     visibility: hidden;
     position: relative;
-    top: -15px;
-    left: -85px;
+    top: -105px;
+    left: 33px;
     height: 70px;
     width: 70px;
+}
+
+.individual-track{
+    margin-bottom: 10px;
+    width: 135px;
+    height: 200px;
+    /* border: 1px solid black; */
+    margin-right: 20px;
+}
+
+.track-title{
+    font-size: 14px;
+    position: relative;
+    top: -90px;
+    text-decoration: none;
+    white-space: nowrap;
+    overflow-x: hidden;
+}
+
+.track-artist{
+    position: relative;
+    top:-100px;
+    color: gray;
+    font-size: 12px;
+}
+
+.track-title:hover,
+.track-artist:hover{
+    text-decoration: underline;
+    cursor: pointer; 
 }

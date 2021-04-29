@@ -8,6 +8,7 @@ import './Splash.css'
 
 function Splash() {
     const [isLoaded, setIsLoaded]= useState(false);
+    const [playlist, setPlaylist]= useState([])
     const dispatch = useDispatch();
     const history = useHistory();
 
@@ -19,8 +20,10 @@ function Splash() {
     }
 
     useEffect(() => {
-        dispatch(trackActions.getMostRecent()).then(()=> setIsLoaded(true))
-    })
+        dispatch(trackActions.getMostRecent()).then((res)=> {
+            setPlaylist(res);
+            setIsLoaded(true)})
+    }, [])
     return(
         <div className="page splash">
             <div className="splash-img-wrapper">
@@ -30,10 +33,10 @@ function Splash() {
                 <button className="splash-img-center-3" onClick={()=> streamClick()}>Start Relaxing</button>
             </div>
             <div className="splash-search">
-                <input type="text" class="splash-searchbar" placeholder="Search for relaxing tracks"></input>
-                <button type="button" class="splash-upload" onClick={() => uploadClick()}>Upload your own</button>
+                <input type="text" className="splash-searchbar" placeholder="Search for relaxing tracks"></input>
+                <button type="button" className="splash-upload" onClick={() => uploadClick()}>Upload your own</button>
             </div>
-            {isLoaded && <AlbumDisplay/>}
+            {isLoaded && <AlbumDisplay tracks={playlist}/>}
         </div>
     )
 

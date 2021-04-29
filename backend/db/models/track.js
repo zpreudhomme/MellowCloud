@@ -49,6 +49,14 @@ module.exports = (sequelize, DataTypes) => {
     return playlistArr;
   }
 
+  Track.getMostRecentTracks = async function () {
+    let tracks = await Track.findAll({
+      order: [['createdAt', 'DESC']],
+      limit: 4
+    });
+
+    return tracks;
+  }
 
   return Track;
 };

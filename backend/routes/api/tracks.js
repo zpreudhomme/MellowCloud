@@ -16,4 +16,10 @@ router.get('/genre/:id(\\d+)', asyncHandler(async (req, res, next) => {
     return res.json(tracks)
 }))
 
+router.get('/recent', asyncHandler(async (req, res, next) => {
+    let tracks = await Track.getMostRecentTracks();
+    console.log(tracks)
+    return res.json(tracks);
+}))
+
 module.exports = router;

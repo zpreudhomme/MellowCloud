@@ -41,6 +41,14 @@ export const getMostRecent = async () => {
     return data;
 }
 
+export const getSingleTrack = async (id) => {
+    console.log("hi it me in frontend", id)
+    const response = await csrfFetch(`../api/tracks/single/${id}`)
+
+    const data = await response.json();
+    return data;
+}
+
 const initialState = {
     currentTrack: null,
     currentPlaylist: null,

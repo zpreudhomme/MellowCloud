@@ -57,6 +57,13 @@ export const logout = () => async dispatch => {
     return data;
 }
 
+export const getUser = async (id) => {
+    const response = await csrfFetch(`../api/users/${id}`);
+    const data = await response.json();
+
+    return data;
+}
+
 const initialState = {
     user: null
 }

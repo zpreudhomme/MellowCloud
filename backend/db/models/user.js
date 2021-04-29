@@ -61,6 +61,12 @@ module.exports = (sequelize, DataTypes) => {
     return bcrypt.compareSync(password, this.hashedPassword.toString());
    };
 
+  User.getUserById = async function(id) {
+    return await User.findByPk(id, {
+      include:['Track']
+    })
+  }
+
   User.getCurrentUserById = async function (id) {
     return await User.scope('currentUser').findByPk(id);
    };

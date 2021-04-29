@@ -43,4 +43,10 @@ router.post(
     }),
   );
 
+router.get("/:id", asyncHandler((async (req, res) =>{
+  let userId = parseInt(req.params.id, 10);
+  let user = await User.getUserById(userId);
+  return res.json(user);
+})));
+
 module.exports = router;

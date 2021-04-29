@@ -10,18 +10,14 @@ const Stream = ({loadSong, loadPlaylist}) => {
     const [playlists, setPlaylists] = useState([])
 
     useEffect(() => {
-        // setIsLoaded(true);
         async function fetchData(){
             const data = await trackActions.getAllPlaylistsByGenre();
             setPlaylists(data);
-            // console.log(data);
         }
         fetchData();
-        // console.log(playlists)
     }, [])
 
     useEffect(() => {
-        console.log("ive changed!", playlists)
         setIsLoaded(true);
     }, [playlists])
   

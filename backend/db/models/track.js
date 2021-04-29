@@ -55,8 +55,14 @@ module.exports = (sequelize, DataTypes) => {
       limit: 12,
       include:['User', 'Genre'],
     });
-
     return tracks;
+  }
+
+  Track.getTrackById = async function (id) {
+    let track = await Track.findByPk(id, {
+      include: ['Genre', 'User']
+    })
+    return track;
   }
 
   return Track;

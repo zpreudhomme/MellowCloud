@@ -5,8 +5,9 @@ import Splash from "./components/Splash";
 import SignupFormPage from "./components/SignupFormPage";
 import AudioPlayer from "./components/AudioPlayer";
 import Stream from "./components/Stream"
+import Track from "./components/Track"
+import User from "./components/User"
 import * as sessionActions from "./store/session";
-import * as trackActions from "./store/track";
 import Navigation from "./components/Navigation";
 
 // const defaultTrack = {
@@ -42,6 +43,12 @@ function App() {
             </Route>
             <Route path ="/stream">
               <Stream loadSong={setTrackLoaded} loadPlaylist={setPlaylistLoaded} playlists={track.allPlaylists}/>
+            </Route>
+            <Route path="/track/:trackId">
+              <Track />
+            </Route>
+            <Route path="/user/:userId">
+              <User />
             </Route>
           </Switch>
         </div>

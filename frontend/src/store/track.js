@@ -42,7 +42,6 @@ export const getMostRecent = async () => {
 }
 
 export const getSingleTrack = async (id) => {
-    console.log("hi it me in frontend", id)
     const response = await csrfFetch(`../api/tracks/single/${id}`)
 
     const data = await response.json();

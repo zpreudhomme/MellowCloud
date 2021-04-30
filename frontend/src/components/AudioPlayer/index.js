@@ -26,7 +26,6 @@ const AudioPlayer = ({ tracks }) => {
     }, [index]);
 
     useEffect(() => {
-        console.log(trackIndex)
         if (isPlaying){
             audioRef.current.play();
             startTimer();

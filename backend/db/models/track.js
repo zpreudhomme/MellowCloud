@@ -42,7 +42,7 @@ module.exports = (sequelize, DataTypes) => {
   }
 
   Track.getRelatedTracks = async function (genreId, trackId) {
-    console.log(genreId)
+
     let tracks = await Track.findAll({
       where: {
         genreId: genreId,

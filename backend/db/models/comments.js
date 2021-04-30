@@ -16,9 +16,21 @@ module.exports = (sequelize, DataTypes) => {
       where: {
         trackId: id
       },
-      include: ['User']
+      include: ['User'],
+      order: [['createdAt', 'ASC']]
     });
     return comments;
   }
+
+  Comments.createComment = async function(userId, trackId, content) {
+    let comment = await Comments.create({
+      userId,
+      trackId,
+      content
+    })
+
+    return comment;
+  }
+
   return Comments;
 };

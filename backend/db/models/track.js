@@ -1,5 +1,6 @@
 'use strict';
-const { User, Genre} = require('./index')
+const { User, Genre} = require('./index');
+const { Op } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   const Track = sequelize.define('Track', {
     title: {
@@ -36,6 +37,22 @@ module.exports = (sequelize, DataTypes) => {
       },
       include:['User', 'Genre'],
       }
+    )
+    return tracks;
+  }
+
+  Track.getRelatedTracks = async function (genreId, trackId) {
+    console.log(genreId)
+    let tracks = await Track.findAll({
+      where: {
+        genreId: genreId,
+        [Op.not]: [
+          {id: trackId}
+        ] 
+      },
+      include:['User', 'Genre'],
+      limit: 5,
+      },
     )
     return tracks;
   }

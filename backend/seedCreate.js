@@ -47,6 +47,27 @@ function createTrack (){
   return tracks;
 }
 
-let tracks = createTrack()
+// let tracks = createTrack()
 
-console.log(tracks);
+// console.log(tracks);
+
+async function createComments () {
+  let comments = [];
+
+  for (let i = 0; i < 100; i++){
+    let userId = Math.ceil(Math.random()*31);
+    let trackId = Math.ceil(Math.random()*22);
+    let sentences = Math.ceil(Math.random()*4);
+    let res = await fetch(`https://baconipsum.com/api/?type=meat-and-filler&sentences=${sentences}&start-with-lorem`)
+    let data = await res.json()
+    let comment = {
+      content: data[0],
+      userId,
+      trackId
+    }
+    comments.push(comment)
+  }
+  console.log(comments)
+}
+
+createComments();

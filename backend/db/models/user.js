@@ -53,8 +53,8 @@ module.exports = (sequelize, DataTypes) => {
   };
 
   User.prototype.toSafeObject = function() { // remember, this cannot be an arrow function
-    const { id, username, email } = this; // context will be the User instance
-    return { id, username, email };
+    const { id, username, email, profilePhoto } = this; // context will be the User instance
+    return { id, username, email, profilePhoto };
   };
 
   User.prototype.validatePassword = function (password) {
@@ -63,7 +63,7 @@ module.exports = (sequelize, DataTypes) => {
 
   User.getUserById = async function(id) {
     return await User.findByPk(id, {
-      include:['Track']
+      // include:['Track']
     })
   }
 

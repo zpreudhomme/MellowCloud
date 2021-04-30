@@ -10,5 +10,15 @@ module.exports = (sequelize, DataTypes) => {
     Comments.belongsTo(models.User, { foreignKey: 'userId' }),
     Comments.belongsTo(models.Track, { foreignKey: 'trackId' })
   };
+
+  Comments.getCommentsByTrack = async function(id) {
+    let comments = await Comments.findAll({
+      where: {
+        trackId: id
+      },
+      include: ['User']
+    });
+    return comments;
+  }
   return Comments;
 };

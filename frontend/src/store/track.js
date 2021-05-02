@@ -28,21 +28,59 @@ export const getPlaylistByGenre = (id) => async dispatch => {
 }
 
 export const getAllPlaylistsByGenre = async () => {
-    const response = await csrfFetch('api/tracks/genre');
+    const response = await csrfFetch('/api/tracks/genre');
+
+    const data = await response.json();
+    return data;
+}
+
+export const getPlaylistsByArtist = async (id) => {
+    const response = await csrfFetch(`/api/tracks/artist/${id}`);
 
     const data = await response.json();
     return data;
 }
 
 export const getMostRecent = async () => {
-    const response = await csrfFetch('api/tracks/recent');
+    const response = await csrfFetch('/api/tracks/recent');
 
     const data = await response.json();
     return data;
 }
 
 export const getSingleTrack = async (id) => {
-    const response = await csrfFetch(`../api/tracks/single/${id}`)
+    const response = await csrfFetch(`/api/tracks/${id}`)
+
+    const data = await response.json();
+    return data;
+}
+
+export const getRelatedTracks = async (genreId, trackId) => {
+    const response = await csrfFetch(`/api/tracks/related/${genreId}/${trackId}`);
+
+    const data= await response.json();
+    return data;
+}
+
+export const getCommentsByTrack = async (id) => {
+    const response = await csrfFetch(`/api/tracks/${id}/comments`);
+
+    const data = await response.json();
+    return data;
+}
+
+export const getCommentsByArtist = async (id) => {
+    const response = await csrfFetch(`/api/users/${id}/comments`);
+
+    const data = await response.json();
+    return data;
+}
+
+export const postNewComment = async (userId, trackId, content) => {
+    const response = await csrfFetch('/api/tracks/comment', {
+        method: 'POST',
+        body: JSON.stringify({userId, trackId, content})
+    });
 
     const data = await response.json();
     return data;

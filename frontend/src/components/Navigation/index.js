@@ -33,6 +33,14 @@ function Navigation({ isLoaded }){
     history.push(`/${id}`)
   }
 
+  const searchSubmit = (e) => {
+    e.preventDefault();
+    let search = document.getElementById("searchbar").value
+    document.getElementById("searchbar").value =""
+    console.log(search)
+    history.push(`/search/${search}`)
+  }
+
   return (
     <>
       <nav className="navbar">
@@ -54,7 +62,10 @@ function Navigation({ isLoaded }){
             </div>
           </div>
           <div className="navbar-search">
-            <input id="searchbar" type="text" placeholder="Search"></input>
+            <form method ="post" onSubmit={(e)=> searchSubmit(e)}>
+              <input id="searchbar" type="text" placeholder="Search"></input>
+              <button type="submit" id="search-btn">Go</button>
+            </form>
           </div>
           <div className="navbar-right">
             {isLoaded && sessionLinks}

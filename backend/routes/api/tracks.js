@@ -22,6 +22,13 @@ router.get('/genre/:id(\\d+)', asyncHandler(async (req, res, next) => {
     return res.json(tracks)
 }))
 
+router.get('/artist/:id(\\d+)', asyncHandler(async (req, res, next) => {
+    let artistId = parseInt(req.params.id, 10);
+    let tracks = await Track.getPlaylistByArtist(artistId);
+    return res.json(tracks)
+}))
+
+
 router.get('/recent', asyncHandler(async (req, res, next) => {
     let tracks = await Track.getMostRecentTracks();
     return res.json(tracks);

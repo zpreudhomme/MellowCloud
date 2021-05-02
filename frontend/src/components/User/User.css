@@ -1,0 +1,46 @@
+.user-bottom{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas: 
+    "comments tracks";
+}
+
+.user-comments{
+    grid-area: comments;
+}
+
+.user-tracks{
+    grid-area: tracks;
+}
+
+.user-container{
+    background-color: #B5BCC7;
+    height: 225px;
+    width: 1080px;
+    /* position:relative; */
+    top:-22px;
+    display: flex;
+    align-items: center;
+}
+
+.user-container img{
+    border-radius: 50%;
+    height: 175px;
+    margin-left: 25px
+}
+
+.user-container h1 {
+    position: relative;
+    margin-left: 15px;
+    margin-bottom: 30px
+}
+
+.user-tracks{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+}
+
+.user-comments h3 {
+    margin-left: 15px;
+}

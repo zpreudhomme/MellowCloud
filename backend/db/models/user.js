@@ -2,6 +2,7 @@
 const bcrypt = require('bcryptjs');
 const { Validator } = require('sequelize');
 
+
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
     username: {
@@ -62,9 +63,11 @@ module.exports = (sequelize, DataTypes) => {
    };
 
   User.getUserById = async function(id) {
-    return await User.findByPk(id, {
-      // include:['Track']
+    let user = await User.findByPk(id, {
+      include:['Comments']
     })
+    
+    return user;
   }
 
   User.getCurrentUserById = async function (id) {

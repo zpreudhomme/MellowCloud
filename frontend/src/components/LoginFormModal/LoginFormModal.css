@@ -1,0 +1,65 @@
+.login-form{
+    height: 250px;
+    width: 400px;
+    display: grid;
+    grid-template-columns: 20px 1fr 20px;
+    grid-template-rows: 40px 2fr 1fr;
+    grid-template-areas:
+    ". title ."
+    ". fields ."
+    ". buttons ."
+}
+
+.login-wrapper{
+    background-color: #B5BCC7;
+}
+
+.modal-content{
+    background-color: red;
+    height: 250px;
+}
+
+.login-fields{
+    grid-area: fields;
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+}
+
+.login-title{
+    grid-area: title;
+    text-align: center;
+}
+
+.button-div{
+    grid-area: buttons;
+    display: flex;
+    justify-content: center
+}
+
+.button-div button {
+    margin-left: 15px;
+    height: 30px;
+    align-items: center;
+}
+
+.login-submit{
+    color: #B5BCC7;
+    background-color: #2F3235;
+    border: 1px #B5BCC7 solid;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 14px; 
+    margin-right: 15px;
+}
+
+.demo-submit{
+    color: white;
+    background-color: #5C91E0;
+    border: 1px white solid;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 14px;
+}

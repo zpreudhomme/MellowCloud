@@ -15,7 +15,7 @@
     width: 1080px;
     height:100%;
     display: grid;
-    grid-template-columns: 65px 1fr 1fr 1fr;
+    grid-template-columns: 65px 3fr 3fr 2fr;
     grid-template-areas: 
     "logo navbar-left search navbar-right";
 }
@@ -78,7 +78,18 @@
 }
 
 #searchbar:focus{
-    width:300px;
+    width:250px;
+}
+
+#search-btn{
+    text-decoration: none;
+    color: white;
+    background: #5C91E0;
+    border:none;
+    margin-left: 15px;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 16px
 }
 
 .navbar-right{
@@ -109,11 +120,30 @@
 .profile-dropdown{
     position: absolute;
     top: 50px;
-    padding-left: 150px;
-    background-color: lavenderblush;
+    background-color:#B5BCC7;
+    width: 125px;
     display: flex;
     flex-direction: column;
-    width: 50px;
+    align-items: center;
+}
+
+#dropdown-username{
+    font-size: 18px;
+    color: #2F3235
+}
+
+#dropdown-username:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+#logout-btn{
+    width: 100%;
+    background-color: #5C91E0;
+    color: white;
+    font-size: 18px;
+    border: none;
+    padding: 5px 0px;
 }
 
 .navbar-logo{

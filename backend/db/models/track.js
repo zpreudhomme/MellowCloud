@@ -41,6 +41,16 @@ module.exports = (sequelize, DataTypes) => {
     return tracks;
   }
 
+  Track.getPlaylistByArtist = async function(id){
+    let tracks = await Track.findAll({
+      where: {
+        artistId: id
+      },
+      include:['User', 'Genre'],
+    });
+    return tracks;
+  }
+
   Track.getRelatedTracks = async function (genreId, trackId) {
 
     let tracks = await Track.findAll({

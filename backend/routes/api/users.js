@@ -4,7 +4,7 @@ const { check } = require('express-validator');
 
 const { handleValidationErrors } = require('../../utils/validation');
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { User } = require('../../db/models');
+const { User, Comments } = require('../../db/models');
 
 const router = express.Router();
 
@@ -47,6 +47,12 @@ router.get("/:id", asyncHandler((async (req, res) =>{
   let userId = parseInt(req.params.id, 10);
   let user = await User.getUserById(userId);
   return res.json(user);
+})));
+
+router.get("/:id/comments", asyncHandler((async (req, res) =>{
+  let userId = parseInt(req.params.id, 10);
+  let comments = await Comments.getCommentsByUser(userId);
+  return res.json(comments);
 })));
 
 

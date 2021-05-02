@@ -56,6 +56,10 @@
     margin-left: 20px;
 }
 
+.artwork:hover{
+    cursor:pointer;
+}
+
 .track-details{
     grid-area: "details";
     display: flex;
@@ -65,13 +69,24 @@
     padding-left: 15px;
 }
 
-/* .track-title{
-    padding-top: 10px;
-} */
+.player-track-title{
+    font-size: 16px;
+    margin-top: 30px;
+}
 
-/* .track-artist{
-   
-} */
+.player-track-artist{
+    position:relative;
+    top:-20px;
+    font-size: 12px;
+}
+
+.player-track-artist:hover,
+.player-track-title:hover{
+    cursor:pointer;
+    text-decoration: underline;
+}
+
+
 
 .track-prograss {
     grid-area: "slider";

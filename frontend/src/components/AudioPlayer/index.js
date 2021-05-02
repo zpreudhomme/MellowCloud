@@ -1,17 +1,18 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router';
 import AudioControls from './AudioControls'
 import './AudioPlayer.css'
 
 const AudioPlayer = ({ tracks }) => {
-
+    const history = useHistory();
     let index = useSelector(state => state.track.currentTrack);
+    let track = useSelector(state => state.track.currentPlaylist);
     // Important States
     const [trackIndex, setTrackIndex] = useState(index);
     const [trackProgress, setTrackProgress] = useState(0);
     const [isPlaying, setIsPlaying] = useState(false)
-
-    const { title, User, artwork, audioSrc } = tracks[trackIndex];
+    const { title, User, artwork, audioSrc, id } = track[index];
 
     // References
     const audioRef = useRef(new Audio(audioSrc));
@@ -20,10 +21,22 @@ const AudioPlayer = ({ tracks }) => {
 
     const { duration } = audioRef.current;
 
+    const trackClick = () => {
+        history.push(`/track/${id}`)
+    }
+
+    const artistClick = () => {
+        history.push(`/user/${User.id}`)
+    }
+
     //Use Effects
     useEffect(() => {
         setTrackIndex(index);
     }, [index]);
+
+    useEffect(()=> {
+        console.log("Beware pt 2")
+    }, [useRef])
 
     useEffect(() => {
         if (isPlaying){
@@ -44,7 +57,7 @@ const AudioPlayer = ({ tracks }) => {
 
     useEffect(() => {
         audioRef.current.pause();
-      
+        console.log("Beware")
         audioRef.current = new Audio(audioSrc);
           setTrackProgress(audioRef.current.currentTime);
       
@@ -127,10 +140,11 @@ const AudioPlayer = ({ tracks }) => {
                     className="artwork"
                     src={artwork} 
                     alt="album art"
+                    onClick={() => trackClick()}
                     />
                     <div className="track-details">
-                        <p className="player-track-title">{title}</p>
-                        <p className="player-track-artist">{User.username}</p>
+                        <p onClick={() => trackClick()} className="player-track-title">{title}</p>
+                        <p onClick={() => artistClick()} className="player-track-artist">{User.username}</p>
                     </div>
                 </div>
             </div>

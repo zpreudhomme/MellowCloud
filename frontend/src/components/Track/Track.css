@@ -1,0 +1,76 @@
+.track-page-info{
+    background-color: #B5BCC7;
+    display: grid;
+    grid-template-columns: 3fr 1fr 2fr;
+    grid-template-rows: 1fr 1fr;
+    height: 380px;
+    width: 1080px;
+    grid-template-areas: 
+    "track-title genre art"
+    "play . art";
+}
+
+#track-art{
+    grid-area: art;
+    width: 340px;
+    height: 340px;
+}
+
+.track-title-artist{
+    grid-area: track-title;
+    margin-left: 25px;
+}
+
+.play-btn{
+    grid-area: play;
+    width: 100px;
+    height: 100px;
+}
+
+.track-genre{
+    grid-area: genre;
+}
+
+.comment{
+    margin: 15px;
+    padding: 5px;
+    border: 1px solid black;
+    display: grid;
+    grid-template-columns: 75px 1fr;
+    grid-template-rows: 50px 1fr;
+    grid-template-areas: 
+    "comment-img comment-title"
+    "comment-content comment-content";
+}
+
+.comment > img {
+    grid-area: comment-img;
+    height: 50px;
+    width: 50px;
+}
+
+.comment + p {
+    grid-area: comment-title;
+}
+
+.comment-content{
+    grid-area:comment-content;
+}
+
+.track-bottom{
+    display:grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas: "comments related";
+}
+
+.comments-area{
+    grid-area:comments;
+}
+
+.related-tracks{
+    grid-area:related;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}

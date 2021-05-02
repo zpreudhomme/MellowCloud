@@ -7,6 +7,9 @@ import AudioPlayer from "./components/AudioPlayer";
 import Stream from "./components/Stream"
 import Track from "./components/Track"
 import User from "./components/User"
+import Library from "./components/Library"
+import Upload from "./components/Upload"
+import Search from "./components/Search"
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 
@@ -45,10 +48,24 @@ function App() {
               <Stream loadSong={setTrackLoaded} loadPlaylist={setPlaylistLoaded} playlists={track.allPlaylists}/>
             </Route>
             <Route path="/track/:trackId">
-              <Track />
+              <Track loadSong={setTrackLoaded} loadPlaylist={setPlaylistLoaded}/>
             </Route>
             <Route path="/user/:userId">
-              <User />
+              <User loadSong={setTrackLoaded} loadPlaylist={setPlaylistLoaded}/>
+            </Route>
+            <Route path="/library">
+              <Library />
+            </Route>
+            <Route path="/upload">
+              <Upload />
+            </Route>
+            <Route path="/search">
+              <Search />
+            </Route>
+            <Route>
+              <div className="page">
+                <h1>404 Page not Found</h1>
+              </div>
             </Route>
           </Switch>
         </div>

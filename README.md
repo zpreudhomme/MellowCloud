@@ -21,6 +21,12 @@ MellowCloud is a SoundClound clone designed to help you find music and sounds to
  - Logged in users will be able to leave a comment on a track
  - Adding a comment to the page will not cause a full page reload
 
+## Technology Used
+
+This project was build almost entirely with React in the frontend.  I was able to practice styling with CSS throughout the project and ensure that I am growing my skills in that area.  The backend server and API was created and served by Express.  The database setup and querying was handled by Sequelize.  The project is hosted on Heroku and can be viewed at 
+[MellowCloud](https://mellowcloud.herokuapp.com).
+Resources for seed files were found at [Pixabay](https://pixabay.com/music/), [FreeSound](https://freesound.org/), [Free Music Archive](https://freemusicarchive.org/), [Unsplash](https://unsplash.com/), and [Random User Generator](https://randomuser.me/).
+
 ## Database Schema
 
 ### `Users`
@@ -48,6 +54,41 @@ MellowCloud is a SoundClound clone designed to help you find music and sounds to
 |-------------|-----------|-----------------------|
 | id          | int       | not null, primary key |
 | title       | string    | not null              |
-| artist      | string    | not null              |
+| artistId    | string    | not null              |
 | artwork     | string    |                       |
 | source      | string    | not null              |
+| genreId     | string    | not null              |
+
+- `artistId` references `id` from `users`
+- `genreId` references `id` from `genres`
+
+### `Genres`
+| column name | data type | details               |
+|-------------|-----------|-----------------------|
+| id          | int       | not null, primary key |
+| name        | string    | not null              |
+
+## API Routes
+
+ The API is an important part of this project which will help keep the site upto date and organized with tracks and what to do with them.  The API is responsible for populating most of the website with information.
+ 
+- `/api/session`
+  - `POST /` Will login a user with correct credentials
+  - `DELETE /` Will delete the session cookie and logout the current user
+  - `GET /` Will restore the current user and return a safe object of user information
+- `/api/users`
+  - `POST /` Creates a new user from a validated request body, returns the new user upon completion
+  - `GET /:id` Finds a specified user by their primary key
+  - `GET /:id/comments` Gets all the comments of a specified user
+- `/api/tracks`
+  - `GET /:id` Finds a track by its primary key
+  - `GET /genre` Finds all tracks and organizes them by genre
+  - `GET /genre/:id` Finds all tracks of a specified genre
+  - `GET /artist/:id` Finds all tracks of a specified artist
+  - `GET /recent` Finds the 12 most recent tracks added and returns them
+  - `GET /:id(\\d+)/comments` Finds all the comments associated to a specified track
+  - `GET /related/:id(\\d+)/:trackId(\\d+)`Gets a list of up to 4 related tracks to a trackId without including the original track
+  - `POST /comment` Creates and adds a new comment to the database
+  - `DELETE /comment/:id(\\d+)` Deletes a specified comment from the database
+
+

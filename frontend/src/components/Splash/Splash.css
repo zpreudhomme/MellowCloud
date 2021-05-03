@@ -96,6 +96,21 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 15px;
+}
+
+.about-clone a{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.about-clone a:visited{
+    color: black;
+}
+
+.about-clone a:hover{
+    text-decoration: underline;
 }
 
 .about-profile{
@@ -104,6 +119,23 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 15px;
+
+}
+
+.about-profile a{
+    margin-top: -8px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.about-profile a:visited{
+    color:black;
+}
+
+.about-profile a:hover{
+   text-decoration: underline;
 }
 
 .splash-about-title{
@@ -114,6 +146,7 @@
 .about-profile img {
     height: 135px;
     width: 135px;
+    margin-top: -5px;
 }
 
 button:hover{

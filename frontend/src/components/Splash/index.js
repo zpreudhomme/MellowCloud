@@ -58,14 +58,21 @@ function Splash({loadSong, loadPlaylist}) {
             <div className="about-div">
                 <div className="about-clone">
                     <h2 className="splash-about-title">Welcome to my SoundCloud clone!</h2>
-                    <p>I have truly hated using AWS in this project :(</p>
+                    <a href="https://github.com/zpreudhomme/MellowCloud">Project GitHub</a>
+                    <p>This site was build mostly using a React framework to build out the functionality and components of the frontend.
+                        The database was created and queried using Sequelize and was hosted with Express.
+                    </p>
+                    <p>
+                        Building this project over the course of a week taught not only about React components,
+                        but also how to style effectively with CSS and implement HTMLAudioElements to play music.
+                    </p>
                 </div>
                 <div className="about-profile">
                     <h2 className="splash-about-title">Created By:</h2>
                     <img src="https://avatars.githubusercontent.com/u/76059008?v=4"/>
                     <h3>Zane Preudhomme</h3>
-                    <h4>App Academy</h4>
-                    <p>Zane loves to learn to code and loves exploring the great outdoors</p>
+                    <a href="https://github.com/zpreudhomme">GitHub</a>
+                    <p>Zane loves learning to code and spends any chance he can get exploring the outdoors of Arizona through backpacking and running.</p>
                 </div>
             </div>
 

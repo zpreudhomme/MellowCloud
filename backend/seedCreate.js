@@ -30,16 +30,16 @@ async function createUsers () {
 
 function createTrack (){
   let tracks = [];
-  for (let i = 0; i < 22; i++){
+  for (let i = 0; i < 18; i++){
   
     let artistId = Math.ceil(Math.random()*31);
     let genreId = Math.ceil(Math.random()*4);
     console.log(artistId);
     let track = {
-      title: "",
+      title: "FILLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL",
       artist: artistId,
-      artwork: "https://blog.spoongraphics.co.uk/wp-content/uploads/2017/album-art/18.jpg",
-      audioSrc: "",
+      artwork: "FILLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL",
+      audioSrc: "FILLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL",
       genreId: genreId,
     }
     tracks.push(track)
@@ -56,7 +56,7 @@ async function createComments () {
 
   for (let i = 0; i < 100; i++){
     let userId = Math.ceil(Math.random()*31);
-    let trackId = Math.ceil(Math.random()*22);
+    let trackId = Math.ceil(Math.random()*40);
     let sentences = Math.ceil(Math.random()*4);
     let res = await fetch(`https://baconipsum.com/api/?type=meat-and-filler&sentences=${sentences}&start-with-lorem`)
     let data = await res.json()

@@ -25,7 +25,7 @@ MellowCloud is a SoundClound clone designed to help you find music and sounds to
 
 This project was build almost entirely with React in the frontend.  I was able to practice styling with CSS throughout the project and ensure that I am growing my skills in that area.  The backend server and API was created and served by Express.  The database setup and querying was handled by Sequelize.  The project is hosted on Heroku and can be viewed at 
 [MellowCloud](https://mellowcloud.herokuapp.com).
-Resources for seed files were found at [Pixabay](https://pixabay.com/music/), [FreeSound](https://freesound.org/), [Free Music Archive](https://freemusicarchive.org/), [Unsplash](https://unsplash.com/), and [Random User Generator](https://randomuser.me/).
+Resources for seed files were found at [Pixabay](https://pixabay.com/music/), [FreeSound](https://freesound.org/), [Free Music Archive](https://freemusicarchive.org/), [Unsplash](https://unsplash.com/), [Bacon Ipsum API](https://baconipsum.com/json-api/), and [Random User Generator](https://randomuser.me/).
 
 ## Database Schema
 
@@ -90,5 +90,20 @@ Resources for seed files were found at [Pixabay](https://pixabay.com/music/), [F
   - `GET /related/:id(\\d+)/:trackId(\\d+)`Gets a list of up to 4 related tracks to a trackId without including the original track
   - `POST /comment` Creates and adds a new comment to the database
   - `DELETE /comment/:id(\\d+)` Deletes a specified comment from the database
+
+## Screenshots
+
+### Splash Page
+![MellowCloud](https://user-images.githubusercontent.com/76059008/116861219-a1fcdb80-abb7-11eb-88bc-ef301696f9a1.png)
+
+### Stream Page
+![MellowCloud (1)](https://user-images.githubusercontent.com/76059008/116861418-e8ead100-abb7-11eb-941d-a2e2e865c05b.png)
+
+### Track Page
+![MellowCloud (2)](https://user-images.githubusercontent.com/76059008/116861449-f6a05680-abb7-11eb-9ff1-9f1fb2c0d106.png)
+
+### User and Music Player Demo
+https://user-images.githubusercontent.com/76059008/116861727-73333500-abb8-11eb-9786-3dc61ed99f5b.mp4
+
 
 

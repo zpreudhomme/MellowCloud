@@ -22,7 +22,7 @@ function Splash({loadSong, loadPlaylist}) {
         e.preventDefault();
         let search = document.getElementById("splash-searchbar").value
         document.getElementById("splash-searchbar").value =""
-        console.log(search)
+        // console.log(search)
         history.push(`/search/${search}`)
       }
 

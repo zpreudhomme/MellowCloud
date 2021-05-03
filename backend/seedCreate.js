@@ -67,7 +67,7 @@ async function createComments () {
     }
     comments.push(comment)
   }
-  console.log(comments)
+  // console.log(comments)
 }
 
 createComments();

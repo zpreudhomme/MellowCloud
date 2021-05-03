@@ -56,7 +56,7 @@ const AudioPlayer = ({ tracks }) => {
 
     useEffect(() => {
         audioRef.current.pause();
-        console.log("Beware")
+        // console.log("Beware")
         audioRef.current = new Audio(audioSrc);
           setTrackProgress(audioRef.current.currentTime);
       

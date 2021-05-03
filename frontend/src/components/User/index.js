@@ -28,8 +28,8 @@ function User ({loadSong, loadPlaylist}) {
     }, [])
 
     useEffect(() => {
-        console.log(user)
-        console.log(comments)
+        // console.log(user)
+        // console.log(comments)
         if (user.username){
             setIsLoaded(true);
         }

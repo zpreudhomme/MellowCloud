@@ -39,7 +39,7 @@ function Track({loadSong, loadPlaylist}) {
     }, [track])
 
     const setSong = () => {
-        console.log("hi")
+        // console.log("hi")
         loadSong(false)
         loadPlaylist(false)
         dispatch(trackActions.setPlaylist(playlist))

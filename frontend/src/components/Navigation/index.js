@@ -36,7 +36,7 @@ function Navigation({ isLoaded }){
     e.preventDefault();
     let search = document.getElementById("searchbar").value
     document.getElementById("searchbar").value =""
-    console.log(search)
+    // console.log(search)
     history.push(`/search/${search}`)
   }
 

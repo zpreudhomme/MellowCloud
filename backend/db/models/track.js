@@ -61,7 +61,7 @@ module.exports = (sequelize, DataTypes) => {
         ] 
       },
       include:['User', 'Genre'],
-      limit: 5,
+      limit: 4,
       },
     )
     return tracks;

@@ -1,0 +1,59 @@
+.signup-wrapper{
+    background-color: #B5BCC7;
+    margin-top: 0px;
+}
+
+#modal-content{
+    background-color: #B5BCC7;
+}
+
+.signup-form{
+    height: 300px;
+    width: 400px;
+    display: grid;
+    grid-template-columns: 20px 1fr 20px;
+    grid-template-rows: 40px 2fr 1fr;
+    grid-template-areas:
+    ". title ."
+    ". fields ."
+    ". button ."
+}
+
+.signup-title{
+    grid-area: title;
+    text-align: center;
+}
+
+.signup-fields{
+    grid-area: fields;
+    display: flex;
+    flex-direction: column;
+    padding-top: 10px;
+}
+
+.signup-fields label{
+    padding-top: 10px;
+}
+
+.signup-fields input {
+    height: 16px;
+}
+
+.signup-btn{
+    grid-area: button;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signup-btn button {
+    height: 30px;
+    align-items: center;
+    color: white;
+    background-color: #5C91E0;
+    border: 1px white solid;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 14px;
+}

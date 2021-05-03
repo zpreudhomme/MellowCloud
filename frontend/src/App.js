@@ -47,7 +47,7 @@ function App() {
             <Route path ="/stream">
               <Stream loadSong={setTrackLoaded} loadPlaylist={setPlaylistLoaded} playlists={track.allPlaylists}/>
             </Route>
-            <Route path="/track/:trackId">
+            <Route exact path="/track/:trackId">
               <Track loadSong={setTrackLoaded} loadPlaylist={setPlaylistLoaded}/>
             </Route>
             <Route path="/user/:userId">

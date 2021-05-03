@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useHistory } from 'react-router-dom'
 import { useParams } from "react-router";
 import Album from "../Stream/Album"
 import * as sessionActions from "../../store/session"
@@ -6,6 +7,7 @@ import * as trackActions from "../../store/track"
 import './User.css'
 
 function User ({loadSong, loadPlaylist}) {
+    const history = useHistory();
     const [isLoaded, setIsLoaded] = useState(false);
     const [user, setUser] = useState({});
     const [tracks, setTracks] = useState([])
@@ -33,6 +35,10 @@ function User ({loadSong, loadPlaylist}) {
         }
     }, [user])
 
+    const trackClick = (e) => {
+        history.push(`/track/${e.target.id}`)
+    }
+
     return (
         <div className = "user page">
             {isLoaded &&
@@ -46,8 +52,10 @@ function User ({loadSong, loadPlaylist}) {
                         <h3>User Comments</h3>
                     {comments.map((comment, i) => (
                                 <div key={i} className="comment">
-                                    <img src={comment.Track.artwork} />
-                                    <p>{comment.Track.title}</p>
+                                    <img id={comment.Track.id} src={comment.Track.artwork} onClick={(e) => trackClick(e)}/>
+                                    <div className="comment-head">
+                                        <h4 id={comment.Track.id} onClick={(e) => trackClick(e)}>{comment.Track.title}</h4>
+                                    </div>
                                     <p className="comment-content">{comment.content}</p>
                                 </div>
                             ))}

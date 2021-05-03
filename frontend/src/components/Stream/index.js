@@ -23,11 +23,10 @@ const Stream = ({loadSong, loadPlaylist}) => {
   
     return (
         <div className="page">
-            <h1>Discover Page</h1>
             <div className="playlist-container">
                 {isLoaded && playlists.map((list, j) =>(
                     <div key={j}>
-                    <h1>Genre: {list[0].Genre.name}</h1>
+                    <h1 className="playlist-title">{list[0].Genre.name}</h1>
                     <div className="playlist">
                         {list.map((el,i) => (
                             <Album key={i} track={el} playlist={list} trackIndex={i} playlistIndex={j} loadSong={loadSong} loadPlaylist={loadPlaylist}/>

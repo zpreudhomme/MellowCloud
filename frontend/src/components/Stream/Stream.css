@@ -5,4 +5,25 @@
 
 .playlist{
     display: flex;
+    flex-wrap: nowrap;
+    overflow-y: hidden;
+    /* overflow-x: scroll; */
+    margin: 0px 40px;
+    width: 1000px;
+}
+
+.individual-track{
+    flex: 0 0 auto;
+}
+
+.playlist-title{
+    padding: 0px 15px 3px 15px;
+    border-bottom: 1px solid #B5BCC7;
+    margin-top: -53x
+}
+
+
+.playlist .individual-track{
+    margin-right:25px;
+    height: 185px;
 }

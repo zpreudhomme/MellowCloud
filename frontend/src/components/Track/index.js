@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router';
+import { useHistory, useParams } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import * as trackActions from '../../store/track'
 import "./Track.css"
 import Album from "../Stream/Album"
 
 function Track({loadSong, loadPlaylist}) {
+    const history = useHistory();
     const {user} = useSelector(state => state.session);
     const [isLoaded, setIsLoaded] = useState(false);
     const [track, setTrack] = useState({})
@@ -18,6 +19,7 @@ function Track({loadSong, loadPlaylist}) {
     
 
     useEffect(() => {
+        setIsLoaded(false);
         async function getData() {
             let data = await trackActions.getSingleTrack(trackId)
             let comments = await trackActions.getCommentsByTrack(trackId);
@@ -26,9 +28,9 @@ function Track({loadSong, loadPlaylist}) {
             setComments(comments)
             setTrack(data);
             setPlaylist([data, ...related]);
-        }
+        }  
         getData();
-    }, []);
+    }, [trackId]);
 
     useEffect(() => {
         if (track.User){
@@ -45,6 +47,20 @@ function Track({loadSong, loadPlaylist}) {
         loadSong(true);
     }
 
+    const userClick = (e) => {
+        history.push(`/user/${e.target.id}`)
+    }
+
+    const deleteComment = async (e) => {
+        e.preventDefault();
+        let id = e.target.id;
+        let response = await trackActions.deleteComment(id)
+        if (response.status === 204){
+            let deleteDiv = document.getElementById(`individual-comment-${id}`);
+            deleteDiv.classList.add('hideDiv')
+        }
+    }
+
     const submitComment = async (e) => {
         e.preventDefault();
         let comment = document.getElementById('newComment').value
@@ -52,10 +68,28 @@ function Track({loadSong, loadPlaylist}) {
         let newComment = await trackActions.postNewComment(user.id, trackId, comment);
         let commentContainer = document.getElementById("comments-container");
         let commentHtml = `
-        <div className="comment">
-            <img src=${newComment.User.profilePhoto} />
-            <p>${newComment.User.username}</p>
-            <p>${newComment.content}</p>
+        <div className="comment" style="
+            margin: 15px;
+            padding: 5px;
+            border: 1px solid black;
+            display: grid;
+            grid-template-columns: 75px 1fr;
+            grid-template-rows: 50px 1fr;
+        ">
+            <img src=${newComment.User.profilePhoto} style="
+                grid-column-start: 1;
+                grid-column-end: 1;
+                height: 50px;
+                width: 50px;
+            "/>
+            <h4 style="
+            grid-column-start: 2;
+            ">${newComment.User.username}</h4>
+            <p style="
+            grid-column-start: 1;
+            grid-column-end: 3;
+            grid-row-start: 2;
+            ">${newComment.content}</p>
         </div>
         `;
         commentContainer.innerHTML = commentContainer.innerHTML + commentHtml;
@@ -67,29 +101,39 @@ function Track({loadSong, loadPlaylist}) {
             <>
             <div className="track-page-info">
                 <div className="track-title-artist">
-                    <h2>{track.title}</h2>
-                    <h3>{track.User.username}</h3>
+                    <h1>{track.title}</h1>
+                    <h3>{track.Genre.name}</h3>
                 </div>
-                <img className="play-btn" src="https://i.ibb.co/ww4rCGV/play-btn-img.png" onClick={() => setSong()}/>
+                <div className="track-artist-photo">
+                    <img id={`${track.User.id}`} onClick={(e) => userClick(e)} src={track.User.profilePhoto}/>
+                    <h3 id={`${track.User.id}`} onClick={(e) => userClick(e)}>{track.User.username}</h3>
+                </div>
                 <div className="track-genre">
-                    <h4>{track.Genre.name}</h4>
                 </div>
-                <img id="track-art" src={track.artwork}/>
+                <div className="track-art-div" src={track.artwork}>
+                    <img id="track-art" src={track.artwork} />
+                    <img className="play-btn" src="https://i.ibb.co/ww4rCGV/play-btn-img.png" onClick={() => setSong()}/>
+                </div>
             </div>
             
             <div className="track-bottom">
                 <div className="comments-area">
-                    {user && <div className="comment-input">
-                        <form method="post">
-                            <input id="newComment" type="text" placeholder="What do you think?"></input>
+                    {user && 
+                        <form method="post" onSubmit={(e) => submitComment(e)}>
+                            <div className="comment-input">
+                            <img className="user-photo" src={user.profilePhoto} />
+                            <input id="newComment" type="text" placeholder="Write a comment"></input>
                             <button onClick={(e) => submitComment(e)}type="submit" value="submit" id={`commentUser_${user.id}`}>Submit</button>
-                        </form>
-                    </div>}
+                            </div>
+                        </form>}
                         <div id="comments-container">
                             {comments.map((comment, i) => (
-                                <div key={i} className="comment">
-                                    <img src={comment.User.profilePhoto} />
-                                    <p>{comment.User.username}</p>
+                                <div key={i} className="comment" id={`individual-comment-${comment.id}`}>
+                                    <img src={comment.User.profilePhoto} id={comment.User.id} onClick={(e) => userClick(e)}/>
+                                    <div className="comment-head">
+                                        <h4 id={comment.User.id} onClick={(e) => userClick(e)}>{comment.User.username}</h4>
+                                        {user && comment.User.id === user.id && <button id={comment.id} type="button" onClick={(e) => deleteComment(e)}>Delete</button>}
+                                    </div>
                                     <p className="comment-content">{comment.content}</p>
                                 </div>
                             ))}

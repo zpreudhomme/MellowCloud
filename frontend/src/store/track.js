@@ -86,6 +86,14 @@ export const postNewComment = async (userId, trackId, content) => {
     return data;
 }
 
+export const deleteComment = async (id) => {
+    const response = await csrfFetch(`/api/tracks/comment/${id}`, {
+        method:'DELETE',
+    })
+
+    return response;
+}
+
 const initialState = {
     currentTrack: null,
     currentPlaylist: null,

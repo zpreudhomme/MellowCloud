@@ -1,7 +1,17 @@
 /* TODO Add site wide styles */
 html {
-    font-family: Helvetica, sans-serif;
+    font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Garuda, Verdana, Tahoma, sans-serif;
     height: 100%;
+}
+
+button,
+h1,
+h2,
+h3,
+h4,
+p,
+input{
+    font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Garuda, Verdana, Tahoma, sans-serif;
 }
 
 body {

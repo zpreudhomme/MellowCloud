@@ -1,5 +1,6 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
+const { requireAuth } = require('../../utils/auth');
 
 const { Track, Comments } = require('../../db/models');
 
@@ -57,6 +58,12 @@ router.post('/comment', asyncHandler( async (req, res, next) => {
 
     return res.json(newComment)
 }))
+
+router.delete('/comment/:id(\\d+)', requireAuth, asyncHandler(async (req, res, next) => {
+    let id = parseInt(req.params.id, 10);
+    await Comments.deleteComment(id);
+    res.status(204).end();
+}) )
 
 
 module.exports = router;

@@ -3,17 +3,47 @@
     display: grid;
     grid-template-columns: 3fr 1fr 2fr;
     grid-template-rows: 1fr 1fr;
-    height: 380px;
+    height: 300px;
     width: 1080px;
     grid-template-areas: 
     "track-title genre art"
-    "play . art";
+    "artist play art";
+}
+
+.track-artist-photo{
+    grid-area: artist;
+    margin-left: 25px;
+    display: flex;
+    align-items: center;
+    margin-top: -10px;
+}
+
+.track-artist-photo img:hover{
+    cursor: pointer;
+}
+
+.track-artist-photo img{
+    border-radius: 50%;
+    height: 140px;
+    margin-right: 25px;
+}
+
+.track-artist-photo h3:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.track-art-div{
+    grid-area: art;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #track-art{
-    grid-area: art;
-    width: 340px;
-    height: 340px;
+    width: 280px;
+    height: 280px;
+    /* margin-right: 0px; */
 }
 
 .track-title-artist{
@@ -21,10 +51,24 @@
     margin-left: 25px;
 }
 
+.track-title-artist h1 {
+    font-size: 40px;
+}
+
+.track-title-artist h3 {
+    margin-top: -25px;
+}
+
 .play-btn{
-    grid-area: play;
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
+    position:absolute;
+    visibility: hidden;
+}
+
+#track-art:hover + .play-btn{
+    visibility: visible;
+    cursor: pointer;
 }
 
 .track-genre{
@@ -41,6 +85,26 @@
     grid-template-areas: 
     "comment-img comment-title"
     "comment-content comment-content";
+    
+}
+
+.comment-head{
+    display: flex;
+    align-items: center;
+    margin-bottom: -50px;
+    margin-left: -10px;
+}
+
+.comment-head button{
+    margin-left: 540px;
+    color: white;
+    background-color: #5C91E0;
+    border: 1px white solid;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    position: absolute;
 }
 
 .comment > img {
@@ -49,8 +113,18 @@
     width: 50px;
 }
 
-.comment + p {
+.comment > img:hover{
+    cursor: pointer;
+}
+
+.comment > div {
     grid-area: comment-title;
+    margin-top: -50px;
+}
+
+.comment-head > h4:hover {
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 .comment-content{
@@ -61,6 +135,7 @@
     display:grid;
     grid-template-columns: 2fr 1fr;
     grid-template-areas: "comments related";
+    padding-top: 15px;
 }
 
 .comments-area{
@@ -73,4 +148,45 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+}
+
+.comment-input{
+    height: 50px;
+    background-color: #B5BCC7;
+    margin: 0px 15px;
+    display: flex;
+    align-items: center;
+    transition-property: "background-color";
+    transition-duration: 0.75s;
+}
+
+.comment-input:focus-within{
+    background-color: #2F3235
+}
+
+.user-photo{
+    height: 50px;
+    width: 50px;
+}
+
+#newComment{
+    height: 30px;
+    font-size: 16px;
+    margin-left: 10px;
+    width: 525px;
+}
+
+.comment-input button{
+    color: white;
+    background-color: #5C91E0;
+    border: 1px white solid;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    margin-left: 15px;
+}
+
+.hideDiv{
+    display:none;
 }

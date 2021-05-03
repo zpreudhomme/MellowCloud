@@ -59,6 +59,13 @@
     border-right: 1px solid black;
 }
 
+.navbar-home:hover,
+.navbar-stream:hover,
+.navbar-library:hover,
+.navbar-logo:hover{
+    cursor: pointer;
+}
+
 .navbar-search{
     grid-area: "search";
     display: flex;
@@ -71,13 +78,7 @@
     border-color: rgba(0, 0, 0, 0.2);
     border-radius: 3px;
     height: 27px;
-    width: 150px;
     font-size: 16px;
-    transition-property: width;
-    transition-duration: 1.5s;
-}
-
-#searchbar:focus{
     width:250px;
 }
 
@@ -89,7 +90,8 @@
     margin-left: 15px;
     padding: 5px 10px;
     border-radius: 4px;
-    font-size: 16px
+    font-size: 16px;
+    border: 1px white solid;
 }
 
 .navbar-right{
@@ -125,6 +127,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    box-shadow: 7px 5px 5px -3px rgba(0,0,0,0.2), 0px 5px 10px rgba(0,0,0,0.2), -7px 5px 5px -3px rgba(0,0,0,0.2);
 }
 
 #dropdown-username{

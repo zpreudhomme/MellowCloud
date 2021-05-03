@@ -43,5 +43,11 @@ module.exports = (sequelize, DataTypes) => {
     return comment;
   }
 
+  Comments.deleteComment = async function(id) {
+    let comment = await Comments.findByPk(id);
+    await comment.destroy();
+    return;
+  }
+
   return Comments;
 };

@@ -9,8 +9,13 @@ function LoginForm() {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
-  const demoUser = () => {
-
+  const demoUser = (e) => {
+    e.preventDefault();
+    return dispatch(sessionActions.loginUser({credential: 'test@test.com', password: 'password'})).catch(
+      async (res) => {
+        const data = await res.json();
+      }
+    );
   }
 
   const handleSubmit = (e) => {

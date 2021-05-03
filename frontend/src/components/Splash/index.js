@@ -13,9 +13,18 @@ function Splash({loadSong, loadPlaylist}) {
     const streamClick = () => {
         history.push('/stream')
     }
+
     const uploadClick = () => {
         history.push('/upload')
     }
+
+    const searchSubmit = (e) => {
+        e.preventDefault();
+        let search = document.getElementById("splash-searchbar").value
+        document.getElementById("splash-searchbar").value =""
+        console.log(search)
+        history.push(`/search/${search}`)
+      }
 
     useEffect(() => {
         async function getData() {
@@ -40,7 +49,9 @@ function Splash({loadSong, loadPlaylist}) {
                 <button className="splash-img-center-3" onClick={()=> streamClick()}>Start Relaxing</button>
             </div>
             <div className="splash-search">
-                <input type="text" className="splash-searchbar" placeholder="Search for relaxing tracks"></input>
+                <form method="post" onSubmit={(e) => searchSubmit(e)} >
+                    <input type="text" id="splash-searchbar" placeholder="Search for relaxing tracks"></input>
+                </form>
                 <button type="button" className="splash-upload" onClick={() => uploadClick()}>Upload your own</button>
             </div>
             {isLoaded && <AlbumDisplay tracks={playlist} loadSong={loadSong} loadPlaylist={loadPlaylist}/>}

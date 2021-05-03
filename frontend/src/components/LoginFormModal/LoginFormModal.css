@@ -2,6 +2,7 @@
     height: 250px;
     width: 400px;
     display: grid;
+    margin-top: 0px;
     grid-template-columns: 20px 1fr 20px;
     grid-template-rows: 40px 2fr 1fr;
     grid-template-areas:
@@ -12,11 +13,6 @@
 
 .login-wrapper{
     background-color: #B5BCC7;
-}
-
-.modal-content{
-    background-color: red;
-    height: 250px;
 }
 
 .login-fields{

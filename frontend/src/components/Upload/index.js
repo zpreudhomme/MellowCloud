@@ -1,21 +1,21 @@
-import { useState } from 'react'
+// import { useState } from 'react'
 
 function Upload() {
-    const [file, setFile] = useState("")
+    // const [file, setFile] = useState("")
 
-    let url = "https://api.cloudinary.com/v1_1/mellowcloud123/auto/upload"
-    const newMusic = async (e) => {
-        e.preventDefault();
-        let response = await fetch(url, {
-            method:'POST',
-            body: JSON.stringify({
-                file: file,
-            }),
-            upload_preset: "yfgse0hd"
-        })
-        let data = await response.json();
-        console.log(data)
-    }
+    // let url = "https://api.cloudinary.com/v1_1/mellowcloud123/auto/upload"
+    // const newMusic = async (e) => {
+    //     e.preventDefault();
+    //     let response = await fetch(url, {
+    //         method:'POST',
+    //         body: JSON.stringify({
+    //             file: file,
+    //         }),
+    //         upload_preset: "yfgse0hd"
+    //     })
+    //     let data = await response.json();
+    //     console.log(data)
+    // }
     return (
         <div className="upload page">
             <h1>Upload</h1>

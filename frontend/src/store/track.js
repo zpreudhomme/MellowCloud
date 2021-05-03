@@ -14,10 +14,6 @@ export const setPlaylist = playlist => ({
     playlist
 })
 
-const setAllPlaylist = playlists => ({
-    type: SET_ALL_PLAYLIST,
-    playlists
-})
 
 export const getPlaylistByGenre = (id) => async dispatch => {
     const response = await csrfFetch(`api/tracks/genre/${id}`)

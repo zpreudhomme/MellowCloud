@@ -43,7 +43,7 @@ function Splash({loadSong, loadPlaylist}) {
     return(
         <div className="page splash">
             <div className="splash-img-wrapper">
-                <img id="splash-img" src='https://images.unsplash.com/photo-1486520299386-6d106b22014b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80' alt='splash-photo' />
+                <img id="splash-img" src='https://images.unsplash.com/photo-1486520299386-6d106b22014b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80' alt='splash' />
                 <div className="splash-img-center-1">Welcome to</div>
                 <div className="splash-img-center-2">MellowCloud</div>
                 <button className="splash-img-center-3" onClick={()=> streamClick()}>Start Relaxing</button>
@@ -69,7 +69,7 @@ function Splash({loadSong, loadPlaylist}) {
                 </div>
                 <div className="about-profile">
                     <h2 className="splash-about-title">Created By:</h2>
-                    <img src="https://avatars.githubusercontent.com/u/76059008?v=4"/>
+                    <img src="https://avatars.githubusercontent.com/u/76059008?v=4" alt="Zane profile"/>
                     <h3>Zane Preudhomme</h3>
                     <a href="https://github.com/zpreudhomme">GitHub</a>
                     <p>Zane loves learning to code and spends any chance he can get exploring the outdoors of Arizona through backpacking and running.</p>

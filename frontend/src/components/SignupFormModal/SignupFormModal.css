@@ -8,7 +8,7 @@
 }
 
 .signup-form{
-    height: 300px;
+    height: 350px;
     width: 400px;
     display: grid;
     grid-template-columns: 20px 1fr 20px;

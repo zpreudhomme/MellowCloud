@@ -14,6 +14,7 @@ function LoginForm() {
     return dispatch(sessionActions.loginUser({credential: 'test@test.com', password: 'password'})).catch(
       async (res) => {
         const data = await res.json();
+        return data;
       }
     );
   }

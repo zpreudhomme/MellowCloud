@@ -39,6 +39,7 @@ function Track({loadSong, loadPlaylist}) {
     }, [track])
 
     const setSong = () => {
+        console.log("hi")
         loadSong(false)
         loadPlaylist(false)
         dispatch(trackActions.setPlaylist(playlist))
@@ -76,7 +77,7 @@ function Track({loadSong, loadPlaylist}) {
             grid-template-columns: 75px 1fr;
             grid-template-rows: 50px 1fr;
         ">
-            <img src=${newComment.User.profilePhoto} style="
+            <img src=${newComment.User.profilePhoto} alt=${newComment.username} style="
                 grid-column-start: 1;
                 grid-column-end: 1;
                 height: 50px;
@@ -105,14 +106,14 @@ function Track({loadSong, loadPlaylist}) {
                     <h3>{track.Genre.name}</h3>
                 </div>
                 <div className="track-artist-photo">
-                    <img id={`${track.User.id}`} onClick={(e) => userClick(e)} src={track.User.profilePhoto}/>
+                    <img id={`${track.User.id}`} alt={`${track.User.username}`} onClick={(e) => userClick(e)} src={track.User.profilePhoto}/>
                     <h3 id={`${track.User.id}`} onClick={(e) => userClick(e)}>{track.User.username}</h3>
                 </div>
                 <div className="track-genre">
                 </div>
-                <div className="track-art-div" src={track.artwork}>
-                    <img id="track-art" src={track.artwork} />
-                    <img className="play-btn" src="https://i.ibb.co/ww4rCGV/play-btn-img.png" onClick={() => setSong()}/>
+                <div className="track-art-div" onClick={() => setSong()}>
+                    <img id="track-art" src={track.artwork} alt='artwork' onClick={() => setSong()}/>
+                    <img className="play-btn" alt="play button" src="https://i.ibb.co/ww4rCGV/play-btn-img.png" onClick={() => setSong()}/>
                 </div>
             </div>
             
@@ -121,7 +122,7 @@ function Track({loadSong, loadPlaylist}) {
                     {user && 
                         <form method="post" onSubmit={(e) => submitComment(e)}>
                             <div className="comment-input">
-                            <img className="user-photo" src={user.profilePhoto} />
+                            <img className="user-photo" src={user.profilePhoto} alt={`${user.username}`} />
                             <input id="newComment" type="text" placeholder="Write a comment"></input>
                             <button onClick={(e) => submitComment(e)}type="submit" value="submit" id={`commentUser_${user.id}`}>Submit</button>
                             </div>
@@ -129,7 +130,7 @@ function Track({loadSong, loadPlaylist}) {
                         <div id="comments-container">
                             {comments.map((comment, i) => (
                                 <div key={i} className="comment" id={`individual-comment-${comment.id}`}>
-                                    <img src={comment.User.profilePhoto} id={comment.User.id} onClick={(e) => userClick(e)}/>
+                                    <img src={comment.User.profilePhoto} id={comment.User.id} alt={`${comment.User.username}`} onClick={(e) => userClick(e)}/>
                                     <div className="comment-head">
                                         <h4 id={comment.User.id} onClick={(e) => userClick(e)}>{comment.User.username}</h4>
                                         {user && comment.User.id === user.id && <button id={comment.id} type="button" onClick={(e) => deleteComment(e)}>Delete</button>}

@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import Album from '../Stream/Album'
 
 function AlbumDisplay({tracks, loadSong, loadPlaylist}) {

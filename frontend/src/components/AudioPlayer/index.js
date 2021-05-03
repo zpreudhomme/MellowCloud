@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import AudioControls from './AudioControls'
+import * as trackActions from '../../store/track'
 import './AudioPlayer.css'
 
 const AudioPlayer = ({ tracks }) => {
+    const dispatch = useDispatch();
     const history = useHistory();
     let index = useSelector(state => state.track.currentTrack);
     let track = useSelector(state => state.track.currentPlaylist);
@@ -34,9 +36,6 @@ const AudioPlayer = ({ tracks }) => {
         setTrackIndex(index);
     }, [index]);
 
-    useEffect(()=> {
-        console.log("Beware pt 2")
-    }, [useRef])
 
     useEffect(() => {
         if (isPlaying){
@@ -69,24 +68,29 @@ const AudioPlayer = ({ tracks }) => {
           // Set the isReady ref as true for the next pass
           isReady.current = true;
         }
-      }, [trackIndex]);
+      }, [trackIndex, track, audioSrc]);
 
     //Helper Function Land
     //TODO What the heck do i pass for the next/prev tracks? maybe playlists? Genres?
     //Will go to next track
-    const toPrevTrack = () => {
+    const toPrevTrack = async () => {
         if (trackIndex - 1 < 0) {
-            setTrackIndex(tracks.length - 1);
+            // setTrackIndex(tracks.length - 1);
+            await dispatch(trackActions.setTrack(tracks.length - 1));
+            
         } else {
-            setTrackIndex(trackIndex - 1);
+            // setTrackIndex(trackIndex - 1);
+            await dispatch(trackActions.setTrack(trackIndex - 1));
         }
       }
       
-      const toNextTrack = () => {
+      const toNextTrack = async () => {
         if (trackIndex < tracks.length - 1) {
-            setTrackIndex(trackIndex + 1);
+            // setTrackIndex(trackIndex + 1);
+            await dispatch(trackActions.setTrack(trackIndex + 1));
         } else {
-            setTrackIndex(0);
+            // setTrackIndex(0);
+            await dispatch(trackActions.setTrack(0));
         }
       }
 

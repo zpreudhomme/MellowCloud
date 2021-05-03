@@ -52,7 +52,7 @@ function User ({loadSong, loadPlaylist}) {
                         <h3>User Comments</h3>
                     {comments.map((comment, i) => (
                                 <div key={i} className="comment">
-                                    <img id={comment.Track.id} src={comment.Track.artwork} onClick={(e) => trackClick(e)}/>
+                                    <img alt={comment.Track.title} id={comment.Track.id} src={comment.Track.artwork} onClick={(e) => trackClick(e)}/>
                                     <div className="comment-head">
                                         <h4 id={comment.Track.id} onClick={(e) => trackClick(e)}>{comment.Track.title}</h4>
                                     </div>

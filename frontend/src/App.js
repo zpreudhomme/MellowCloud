@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import Splash from "./components/Splash";
-import SignupFormPage from "./components/SignupFormPage";
 import AudioPlayer from "./components/AudioPlayer";
 import Stream from "./components/Stream"
 import Track from "./components/Track"
@@ -40,9 +39,6 @@ function App() {
           <Switch>
             <Route exact path="/">
               <Splash loadSong={setTrackLoaded} loadPlaylist={setPlaylistLoaded}/>
-            </Route>
-            <Route path="/signup">
-              <SignupFormPage />
             </Route>
             <Route path ="/stream">
               <Stream loadSong={setTrackLoaded} loadPlaylist={setPlaylistLoaded} playlists={track.allPlaylists}/>
